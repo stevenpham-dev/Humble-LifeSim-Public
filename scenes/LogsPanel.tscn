@@ -1,0 +1,310 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.18, 0.26, 0.38, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar_panel"]
+bg_color = Color(0.22, 0.32, 0.46, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_log_panel"]
+bg_color = Color(0.24, 0.34, 0.48, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_week_picker"]
+bg_color = Color(0.22, 0.32, 0.50, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_day_header"]
+bg_color = Color(0.32, 0.44, 0.62, 0.92)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[node name="LogsPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.10, 0.22)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(940, 560)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+text = "LOGS"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="ControlsPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar_panel")
+
+[node name="ControlsMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="ControlsRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel/ControlsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 0
+
+[node name="WeekLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel/ControlsMargin/ControlsRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Week"
+
+[node name="WeekOptionButton" type="OptionButton" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel/ControlsMargin/ControlsRow"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_week_picker")
+item_count = 3
+popup/item_0/text = "Week 1"
+popup/item_0/id = 0
+popup/item_1/text = "Week 2"
+popup/item_1/id = 1
+popup/item_2/text = "Week 3"
+popup/item_2/id = 2
+selected = 0
+
+[node name="Spacer" type="Control" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel/ControlsMargin/ControlsRow"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SummaryLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ControlsPanel/ControlsMargin/ControlsRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.86, 0.9, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Viewing selected week"
+
+[node name="LogPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_log_panel")
+
+[node name="LogMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="LogScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogContent" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="WeekHeader" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Week: 1"
+
+[node name="Day1HeaderPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_day_header")
+
+[node name="Day1HeaderLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent/Day1HeaderPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Day 1"
+
+[node name="Day1Entry1" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "• You worked and earned $120."
+autowrap_mode = 3
+
+[node name="Day1Entry2" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "• You studied and gained +1 Intelligence."
+autowrap_mode = 3
+
+[node name="Day2HeaderPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_day_header")
+
+[node name="Day2HeaderLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent/Day2HeaderPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Day 2"
+
+[node name="Day2Entry1" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "• You slept and recovered your energy."
+autowrap_mode = 3
+
+[node name="Day2Entry2" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "• You went to work and completed your shift."
+autowrap_mode = 3
+
+[node name="FooterHintLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.78, 0.82, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+text = "Choose a week to review your activity history."

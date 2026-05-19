@@ -1,0 +1,260 @@
+[gd_scene format=3 uid="uid://dlg1ax1a8lmdy"]
+
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" uid="uid://bn0dudylkc2vu" path="res://scripts/JobBoardScene.gd" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.21, 0.31, 0.44, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_picker"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.22, 0.32, 0.50, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="JobBoardScene" type="Control" unique_id=1264766045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+
+[node name="Background" type="TextureRect" parent="." unique_id=324287731]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="." unique_id=857786183]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.40, 0.56, 0.76, 1)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 10.0
+offset_right = -34.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Layout" type="VBoxContainer" parent="Content" unique_id=276748010]
+size_flags_horizontal = 3
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LocationTitle" type="Label" parent="Content/Layout" unique_id=246744234]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "JOB BOARD"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout" unique_id=1598293785]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Browse jobs, compare requirements, and use limited daily applications. Back returns to the map."
+autowrap_mode = 3
+
+[node name="FilterPanel" type="PanelContainer" parent="Content/Layout" unique_id=1986989695]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="FilterMargin" type="MarginContainer" parent="Content/Layout/FilterPanel" unique_id=554084910]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="FilterRow" type="HBoxContainer" parent="Content/Layout/FilterPanel/FilterMargin" unique_id=1375586683]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CategoryLabel" type="Label" parent="Content/Layout/FilterPanel/FilterMargin/FilterRow" unique_id=485294599]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Category"
+
+[node name="CategoryOptionButton" type="OptionButton" parent="Content/Layout/FilterPanel/FilterMargin/FilterRow" unique_id=1041466905]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_picker")
+selected = 0
+item_count = 4
+popup/item_0/text = "All Jobs"
+popup/item_0/id = 0
+popup/item_1/text = "Physical"
+popup/item_1/id = 1
+popup/item_2/text = "Social"
+popup/item_2/id = 2
+popup/item_3/text = "Technical"
+popup/item_3/id = 3
+
+[node name="Spacer" type="Control" parent="Content/Layout/FilterPanel/FilterMargin/FilterRow" unique_id=331474972]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RefreshButton" type="Button" parent="Content/Layout/FilterPanel/FilterMargin/FilterRow" unique_id=251160558]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Back"
+
+[node name="JobListPanel" type="PanelContainer" parent="Content/Layout" unique_id=2013794673]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="JobListMargin" type="MarginContainer" parent="Content/Layout/JobListPanel" unique_id=595965099]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="JobScroll" type="ScrollContainer" parent="Content/Layout/JobListPanel/JobListMargin" unique_id=59172474]
+custom_minimum_size = Vector2(0, 560)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="JobList" type="VBoxContainer" parent="Content/Layout/JobListPanel/JobListMargin/JobScroll" unique_id=2104612445]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="BottomInfoPanel" type="PanelContainer" parent="Content/Layout" unique_id=1294631038]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="BottomInfoMargin" type="MarginContainer" parent="Content/Layout/BottomInfoPanel" unique_id=927917780]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="BottomInfoText" type="Label" parent="Content/Layout/BottomInfoPanel/BottomInfoMargin" unique_id=1649057564]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Each job has a random application limit from 0 to 5 every day. If applications reach 0, try again later after the next day begins."
+autowrap_mode = 3
+
+[node name="TopBar" type="PanelContainer" parent="Content/Layout" unique_id=1475133780]
+visible = false
+layout_mode = 2
+
+[node name="TopBarMargin" type="MarginContainer" parent="Content/Layout/TopBar" unique_id=115001895]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="TopBarRow" type="HBoxContainer" parent="Content/Layout/TopBar/TopBarMargin" unique_id=498988341]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Content/Layout/TopBar/TopBarMargin/TopBarRow" unique_id=1781104270]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 28
+text = "Job Board"
+
+[node name="Spacer" type="Control" parent="Content/Layout/TopBar/TopBarMargin/TopBarRow" unique_id=1242749154]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Content/Layout/TopBar/TopBarMargin/TopBarRow" unique_id=596625510]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Back"

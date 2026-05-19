@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast_panel"]
+bg_color = Color(0.18, 0.28, 0.42, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.82, 0.40, 0.16)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_box"]
+bg_color = Color(0.22, 0.34, 0.50, 0.96)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="NotificationToast" type="Control"]
+visible = true
+custom_minimum_size = Vector2(420, 88)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 420.0
+offset_bottom = 88.0
+
+[node name="ToastPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toast_panel")
+
+[node name="ToastMargin" type="MarginContainer" parent="ToastPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="ToastRow" type="HBoxContainer" parent="ToastPanel/ToastMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="IconBox" type="PanelContainer" parent="ToastPanel/ToastMargin/ToastRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_box")
+
+[node name="IconLabel" type="Label" parent="ToastPanel/ToastMargin/ToastRow/IconBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "+"
+
+[node name="TextColumn" type="VBoxContainer" parent="ToastPanel/ToastMargin/ToastRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="ToastPanel/ToastMargin/ToastRow/TextColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Update"
+
+[node name="MessageLabel" type="Label" parent="ToastPanel/ToastMargin/ToastRow/TextColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Autosave completed."
+autowrap_mode = 3
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true

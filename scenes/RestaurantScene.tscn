@@ -1,0 +1,288 @@
+
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.08, 0.08, 0.10, 0.90)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_card"]
+bg_color = Color(0.10, 0.10, 0.14, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meal_card"]
+bg_color = Color(0.14, 0.14, 0.18, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.30, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="RestaurantScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34)
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 110
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LocationTitle" type="Label" parent="Content/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "RESTAURANT"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Buy prepared meals to quickly restore hunger and maybe gain small mood benefits."
+autowrap_mode = 3
+
+[node name="RestaurantSummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_card")
+
+[node name="RestaurantSummaryMargin" type="MarginContainer" parent="Content/Layout/RestaurantSummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="RestaurantSummaryColumn" type="VBoxContainer" parent="Content/Layout/RestaurantSummaryPanel/RestaurantSummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RestaurantSummaryTitle" type="Label" parent="Content/Layout/RestaurantSummaryPanel/RestaurantSummaryMargin/RestaurantSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Meal Overview"
+
+[node name="RestaurantSummaryText" type="Label" parent="Content/Layout/RestaurantSummaryPanel/RestaurantSummaryMargin/RestaurantSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Restaurants are good for quick recovery. Meals can affect Food, Happiness, Energy, and Health differently."
+autowrap_mode = 3
+
+[node name="MealListPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="MealListMargin" type="MarginContainer" parent="Content/Layout/MealListPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="MealScroll" type="ScrollContainer" parent="Content/Layout/MealListPanel/MealListMargin"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MealList" type="VBoxContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MealCard1" type="PanelContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_meal_card")
+
+[node name="MealCard1Margin" type="MarginContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard1"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="MealCard1Column" type="VBoxContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard1/MealCard1Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Meal1Title" type="Label" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard1/MealCard1Margin/MealCard1Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Burger Combo"
+
+[node name="Meal1Info" type="Label" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard1/MealCard1Margin/MealCard1Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Cost: $15 | Hunger +35 | Happiness +5"
+autowrap_mode = 3
+
+[node name="Meal1Button" type="Button" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard1/MealCard1Margin/MealCard1Column"]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Order"
+
+[node name="MealCard2" type="PanelContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_meal_card")
+
+[node name="MealCard2Margin" type="MarginContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="MealCard2Column" type="VBoxContainer" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard2/MealCard2Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Meal2Title" type="Label" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard2/MealCard2Margin/MealCard2Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Chicken Plate"
+
+[node name="Meal2Info" type="Label" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard2/MealCard2Margin/MealCard2Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Cost: $18 | Hunger +45 | Energy +5"
+autowrap_mode = 3
+
+[node name="Meal2Button" type="Button" parent="Content/Layout/MealListPanel/MealListMargin/MealScroll/MealList/MealCard2/MealCard2Margin/MealCard2Column"]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Order"
+
+[node name="BottomInfoPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="BottomInfoMargin" type="MarginContainer" parent="Content/Layout/BottomInfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="BottomInfoText" type="Label" parent="Content/Layout/BottomInfoPanel/BottomInfoMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Meals can offer different recovery trade-offs, from cheap fullness to healthier premium options."
+autowrap_mode = 3

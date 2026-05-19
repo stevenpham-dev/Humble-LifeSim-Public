@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/AudioManager.gd" id="1_4tesi"]
+[ext_resource type="AudioStream" path="res://assets/audio/menu_music.wav" id="1_hux41"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui_click.wav" id="2_v6v0x"]
+
+[node name="AudioManager" type="Node" unique_id=1773354976]
+script = ExtResource("1_4tesi")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=835485989]
+stream = ExtResource("1_hux41")
+autoplay = true
+bus = &"Music"
+
+[node name="UIClick" type="AudioStreamPlayer" parent="." unique_id=1867328386]
+stream = ExtResource("2_v6v0x")
+bus = &"SFX"
+
+[node name="ActionSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

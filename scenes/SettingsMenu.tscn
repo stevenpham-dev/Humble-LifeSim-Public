@@ -1,0 +1,243 @@
+[gd_scene format=3 uid="uid://dg2johau8414v"]
+
+[ext_resource type="Script" uid="uid://ciu4t6o3oa3fo" path="res://scripts/SettingsMenu.gd" id="1_settings"]
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://lqgi3quhxc01" path="res://assets/images/GameMenu_camaro_1.png" id="3_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_panel"]
+bg_color = Color(0.21, 0.31, 0.44, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.76, 0.94, 1, 0.32)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+content_margin_left = 26.0
+content_margin_top = 24.0
+content_margin_right = 26.0
+content_margin_bottom = 24.0
+
+[node name="SettingsMenu" type="Control" unique_id=282284932]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_settings")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1335400259]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1907646012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.08, 0.14, 0.16)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1838850166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center" unique_id=164209539]
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_settings_panel")
+
+[node name="Layout" type="VBoxContainer" parent="Center/Panel" unique_id=1079109049]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Center/Panel/Layout" unique_id=706992065]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 52
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Center/Panel/Layout"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ScrollContentMargin" type="MarginContainer" parent="Center/Panel/Layout/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContent" type="VBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="VolumeRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent" unique_id=1860956944]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="VolumeLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/VolumeRow" unique_id=2022060331]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Master Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/VolumeRow" unique_id=1527964956]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FullscreenRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent" unique_id=1909279817]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="FullscreenLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/FullscreenRow" unique_id=768197294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/FullscreenRow" unique_id=43347557]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent" unique_id=1425233044]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ResolutionLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/ResolutionRow" unique_id=782269583]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Resolution"
+
+[node name="ResolutionOption" type="OptionButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/ResolutionRow" unique_id=73500456]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent" unique_id=1019425198]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="MusicLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/MusicRow" unique_id=1711403634]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Music"
+
+[node name="MusicToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/MusicRow" unique_id=1797099334]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SfxRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent" unique_id=7285649]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SfxLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/SfxRow" unique_id=1440075138]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "SFX"
+
+[node name="SfxToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/SfxRow" unique_id=2062700773]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PopupRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PopupLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/PopupRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Show Pop-up Notifications"
+
+[node name="PopupToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/PopupRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+
+[node name="TutorialRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TutorialLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/TutorialRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Show Tutorial on New Games"
+
+[node name="TutorialToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/TutorialRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DimModeRow" type="HBoxContainer" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="DimModeLabel" type="Label" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/DimModeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "Dim Mode"
+
+[node name="DimModeToggle" type="CheckButton" parent="Center/Panel/Layout/ScrollContainer/ScrollContentMargin/ScrollContent/DimModeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonsRow" type="HBoxContainer" parent="Center/Panel/Layout" unique_id=1099670404]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="DefaultsButton" type="Button" parent="Center/Panel/Layout/ButtonsRow" unique_id=1456748988]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "Defaults"
+
+[node name="BackButton" type="Button" parent="Center/Panel/Layout/ButtonsRow" unique_id=335077691]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "Back"

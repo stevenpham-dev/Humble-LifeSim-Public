@@ -1,0 +1,199 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1m406x8t316l"]
+
+[ext_resource type="PackedScene" uid="uid://3xkkb5f7k55j" path="res://scenes/HUD.tscn" id="1_hud"]
+[ext_resource type="Script" uid="uid://xtarqukmw7kf" path="res://scripts/GameRoot.gd" id="2_gameroot"]
+[ext_resource type="Script" uid="uid://dkj6ydhxithnv" path="res://scripts/StatsPanel.gd" id="3_statspanel"]
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats_panel"]
+bg_color = Color(0.18, 0.26, 0.38, 0.94)
+border_color = Color(0.85, 0.7, 0.3, 0.35)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_left = 18
+corner_radius_bottom_right = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_filter_on"]
+bg_color = Color(0.34, 0.48, 0.72, 0.95)
+border_color = Color(0.95, 0.82, 0.40, 0.55)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_filter_off"]
+bg_color = Color(0.22, 0.32, 0.46, 0.95)
+border_color = Color(1, 1, 1, 0.10)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats_close_button"]
+bg_color = Color(0.18, 0.18, 0.22, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+
+[node name="GameRoot" type="Node" unique_id=1635362567]
+script = ExtResource("2_gameroot")
+
+[node name="RootBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45, 0.68, 0.90, 1)
+
+[node name="LocationContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 92.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+clip_contents = true
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1324850174]
+
+[node name="HUD" parent="UILayer" unique_id=1195853218 instance=ExtResource("1_hud")]
+
+[node name="StatsPanel" type="Panel" parent="UILayer" unique_id=1726062305]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -290.0
+offset_right = 430.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stats_panel")
+script = ExtResource("3_statspanel")
+
+[node name="Margin" type="MarginContainer" parent="UILayer/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Layout" type="VBoxContainer" parent="UILayer/StatsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="UILayer/StatsPanel/Margin/Layout"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+horizontal_alignment = 1
+text = "PLAYER STATS"
+
+[node name="FilterRow" type="HBoxContainer" parent="UILayer/StatsPanel/Margin/Layout"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="CoreButton" type="Button" parent="UILayer/StatsPanel/Margin/Layout/FilterRow"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_filter_on")
+text = "Core"
+
+[node name="LifeButton" type="Button" parent="UILayer/StatsPanel/Margin/Layout/FilterRow"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_filter_on")
+text = "Life"
+
+[node name="GeneralButton" type="Button" parent="UILayer/StatsPanel/Margin/Layout/FilterRow"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_filter_on")
+text = "General"
+
+[node name="Scroll" type="ScrollContainer" parent="UILayer/StatsPanel/Margin/Layout"]
+custom_minimum_size = Vector2(0, 380)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StatsGrid" type="GridContainer" parent="UILayer/StatsPanel/Margin/Layout/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 14
+
+[node name="BottomRow" type="HBoxContainer" parent="UILayer/StatsPanel/Margin/Layout"]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="UILayer/StatsPanel/Margin/Layout/BottomRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_stats_close_button")
+text = "Close"
+
+[node name="PauseMenu" type="Control" parent="UILayer" unique_id=1248470486]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AutosaveTimer" type="Timer" parent="." unique_id=1151107423]
+wait_time = 60.0

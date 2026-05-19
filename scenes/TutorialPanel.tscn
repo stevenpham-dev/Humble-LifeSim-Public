@@ -1,0 +1,245 @@
+
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/TutorialPanel.gd" id="2_tutorial"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.18, 0.28, 0.44, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.92, 0.62, 0.38)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_content"]
+bg_color = Color(0.23, 0.36, 0.55, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hint"]
+bg_color = Color(0.14, 0.36, 0.42, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74, 1.0, 0.86, 0.22)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="TutorialPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_tutorial")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.48)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(900, 560)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 32
+text = "QUICK TUTORIAL"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+custom_minimum_size = Vector2(110, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="StepCountLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.94, 1.0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Step 1 / 8"
+
+[node name="ContentPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_content")
+
+[node name="ContentMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="StepColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="StepTitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/StepColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+text = "Welcome to Humble LifeSim"
+
+[node name="StepBodyLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/StepColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1.0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Tutorial text appears here."
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 1.0, 0.86, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_hint")
+text = "Hint text appears here."
+autowrap_mode = 3
+
+[node name="OptionRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="DontShowToggle" type="CheckButton" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/OptionRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Don't show tutorial on new games"
+
+[node name="ButtonRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ButtonRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Back"
+
+[node name="NextButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ButtonRow"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Next"
+
+[node name="SkipButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ButtonRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Skip"

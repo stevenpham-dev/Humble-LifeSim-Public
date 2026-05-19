@@ -1,0 +1,344 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/PhoneScene.gd" id="2_phone"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_summary"]
+bg_color = Color(0.24, 0.40, 0.62, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.30)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.20, 0.32, 0.50, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_message"]
+bg_color = Color(0.23, 0.36, 0.55, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="PhoneScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_phone")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42, 0.64, 0.88, 1)
+
+[node name="SkyGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.85, 1.0, 0.18)
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.85, 1.0, 0.08)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 18.0
+offset_right = -48.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="TopRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LocationTitle" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "PHONE"
+
+[node name="BackButton" type="Button" parent="Content/Layout/TopRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Back"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Call bosses and employers to build relationships. Stronger relationships improve job application chances and promotion EXP."
+autowrap_mode = 3
+
+[node name="SummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_summary")
+
+[node name="SummaryMargin" type="MarginContainer" parent="Content/Layout/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="SummaryColumn" type="VBoxContainer" parent="Content/Layout/SummaryPanel/SummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CurrentJobLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Current Job: Cashier 1"
+
+[node name="BossLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Boss: Morgan 0/100"
+autowrap_mode = 3
+
+[node name="BonusLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.90, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Bonuses appear here."
+autowrap_mode = 3
+
+[node name="ContactPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="ContactMargin" type="MarginContainer" parent="Content/Layout/ContactPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="ContactColumn" type="VBoxContainer" parent="Content/Layout/ContactPanel/ContactMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ContactRow" type="HBoxContainer" parent="Content/Layout/ContactPanel/ContactMargin/ContactColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ContactLabel" type="Label" parent="Content/Layout/ContactPanel/ContactMargin/ContactColumn/ContactRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Contact"
+
+[node name="ContactOptionButton" type="OptionButton" parent="Content/Layout/ContactPanel/ContactMargin/ContactColumn/ContactRow"]
+custom_minimum_size = Vector2(460, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+
+[node name="ContactInfoLabel" type="Label" parent="Content/Layout/ContactPanel/ContactMargin/ContactColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Contact details appear here."
+autowrap_mode = 3
+
+[node name="ActionPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="ActionMargin" type="MarginContainer" parent="Content/Layout/ActionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="ActionColumn" type="VBoxContainer" parent="Content/Layout/ActionPanel/ActionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ActionHintLabel" type="Label" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Actions: Converse (60 min), Praise (45 min), Ask Advice (90 min)."
+autowrap_mode = 3
+
+[node name="ActionGrid" type="GridContainer" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+columns = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+
+[node name="ConverseButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionGrid"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Converse"
+
+[node name="PraiseButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionGrid"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Praise"
+
+[node name="AdviceButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionGrid"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Ask Advice"
+
+[node name="MessagePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="MessageLabel" type="Label" parent="Content/Layout/MessagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Phone messages appear here."
+autowrap_mode = 3
+
+[node name="ListPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="ListMargin" type="MarginContainer" parent="Content/Layout/ListPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="ContactScroll" type="ScrollContainer" parent="Content/Layout/ListPanel/ListMargin"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContactList" type="VBoxContainer" parent="Content/Layout/ListPanel/ListMargin/ContactScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8

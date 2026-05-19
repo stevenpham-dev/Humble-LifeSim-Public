@@ -1,0 +1,233 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.18, 0.26, 0.38, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result_panel"]
+bg_color = Color(0.24, 0.34, 0.48, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_panel"]
+bg_color = Color(0.27, 0.40, 0.60, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="WorkResultsPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.10, 0.22)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(760, 560)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "WORK RESULTS"
+
+[node name="HeadlinePanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_panel")
+
+[node name="HeadlineMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/HeadlinePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="HeadlineText" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/HeadlinePanel/HeadlineMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "You completed your shift."
+
+[node name="ResultPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_result_panel")
+
+[node name="ResultMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="ResultColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="MoneyEarnedLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Money Earned: $120"
+
+[node name="ExpEarnedLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "EXP Earned: +10"
+
+[node name="NextPromotionLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90, 0.90, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Next Promotion: 0 shifts remaining"
+
+[node name="BonusLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Bonus: Burger streak x1.0"
+
+[node name="StatEffectLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.86, 0.92, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Energy -10 | Hunger -8 | Stress +4"
+autowrap_mode = 3
+
+[node name="BottomRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="WorkAgainButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BottomRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Work Again"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BottomRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="OpenLogsButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BottomRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Open Logs"

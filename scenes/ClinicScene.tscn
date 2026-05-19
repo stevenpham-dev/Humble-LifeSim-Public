@@ -1,0 +1,317 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/ClinicScene.gd" id="2_clinic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.20, 0.36, 0.52, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight"]
+bg_color = Color(0.28, 0.48, 0.62, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 1.0, 0.88, 0.34)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.48, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.62, 0.82, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.28, 0.44, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_message"]
+bg_color = Color(0.18, 0.30, 0.45, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[node name="ClinicScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_clinic")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.48, 0.72, 0.82, 1)
+
+[node name="HealthGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65, 1.0, 0.82, 0.16)
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.85, 1.0, 0.08)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 18.0
+offset_right = -54.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="TopRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LocationTitle" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "CLINIC"
+
+[node name="BackButton" type="Button" parent="Content/Layout/TopRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Back"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Recover Health, reduce Stress, and manage hunger-related health damage. If Food stays at 0, Health drops over time."
+autowrap_mode = 3
+
+[node name="SummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
+
+[node name="SummaryMargin" type="MarginContainer" parent="Content/Layout/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="SummaryGrid" type="GridContainer" parent="Content/Layout/SummaryPanel/SummaryMargin"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 8
+
+[node name="HealthLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Health: 100 / 100"
+
+[node name="FoodLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 21
+text = "Food: 100 / 100"
+
+[node name="StressLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 21
+text = "Stress: 0 / 100"
+
+[node name="WalletLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 21
+text = "Wallet: $0"
+
+[node name="StatusLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.90, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 19
+text = "Status: Excellent"
+
+[node name="StarvationLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 19
+text = "Starving Timer: 0 / 60 min"
+
+[node name="ActionPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="ActionMargin" type="MarginContainer" parent="Content/Layout/ActionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="ActionColumn" type="VBoxContainer" parent="Content/Layout/ActionPanel/ActionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ActionTitle" type="Label" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Clinic Actions"
+
+[node name="ButtonRow" type="HBoxContainer" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CheckupButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ButtonRow"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Checkup ($25)"
+
+[node name="TreatmentButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ButtonRow"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Treatment ($120)"
+
+[node name="AdviceButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ButtonRow"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Rest Advice (Free)"
+
+[node name="MessagePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="MessageLabel" type="Label" parent="Content/Layout/MessagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Clinic messages appear here."
+autowrap_mode = 3
+
+[node name="InfoPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="InfoMargin" type="MarginContainer" parent="Content/Layout/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="InfoText" type="Label" parent="Content/Layout/InfoPanel/InfoMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Checkup: $25, 20 min, shows your health status. Treatment: $120, 60 min, restores Health and lowers Stress. Rest Advice: free, 15 min, small wellness recovery."
+autowrap_mode = 3

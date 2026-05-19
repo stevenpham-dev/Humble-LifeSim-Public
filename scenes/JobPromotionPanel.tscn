@@ -1,0 +1,200 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.18, 0.26, 0.38, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_panel"]
+bg_color = Color(0.27, 0.40, 0.60, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.24)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_panel"]
+bg_color = Color(0.24, 0.34, 0.48, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="JobPromotionPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.10, 0.22)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(760, 520)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "PROMOTION!"
+
+[node name="HeadlinePanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_panel")
+
+[node name="HeadlineMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/HeadlinePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="HeadlineText" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/HeadlinePanel/HeadlineMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "You have been promoted from Cashier I to Cashier II!"
+
+[node name="InfoPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_panel")
+
+[node name="InfoMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="InfoColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="OldRankLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin/InfoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Old Rank: Cashier I"
+
+[node name="NewRankLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin/InfoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "New Rank: Cashier II"
+
+[node name="PayIncreaseLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin/InfoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Pay Increase: $120 → $145"
+
+[node name="RequirementNoteLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin/InfoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.86, 0.92, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "You met the needed performance and stat requirements."
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Continue"

@@ -1,0 +1,40 @@
+# Godot generated/editor cache
+.godot/
+
+# Godot export/build output
+exports/
+builds/
+web-build/
+dist/
+*.exe
+*.app
+*.zip
+*.pck
+*.wasm
+*.html
+*.js
+*.worker.js
+*.audio.worklet.js
+*.png.tmp
+
+# ChatGPT / source export helper files
+ScenesCode.txt
+ScriptsCode.txt
+export_gpt_sources.py
+*_Code.txt
+gpt_sources/
+exports_for_chatgpt/
+
+# Local notes and temporary files
+*.tmp
+*.bak
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Important: keep Godot .import files tracked if your project has them.
+# Do not add *.import here unless you intentionally rebuild imports differently.

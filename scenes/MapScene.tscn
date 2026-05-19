@@ -1,0 +1,947 @@
+
+
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scripts/MapScene.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_home"]
+bg_color = Color(0.28, 0.58, 0.34, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.82, 1, 0.78, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_work"]
+bg_color = Color(0.38, 0.48, 0.76, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.82, 0.90, 1, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_gym"]
+bg_color = Color(0.42, 0.62, 0.38, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 1, 0.72, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_burger"]
+bg_color = Color(0.78, 0.38, 0.25, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.80, 0.62, 0.35)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_store"]
+bg_color = Color(0.32, 0.64, 0.72, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.94, 1, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_bank"]
+bg_color = Color(0.82, 0.62, 0.22, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.92, 0.62, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_school"]
+bg_color = Color(0.50, 0.40, 0.78, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 0.80, 1, 0.34)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_carshop"]
+bg_color = Color(0.26, 0.54, 0.62, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74, 0.94, 1, 0.34)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_hover"]
+bg_color = Color(0.36, 0.46, 0.64, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.18)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_pressed"]
+bg_color = Color(0.16, 0.24, 0.40, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.14)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.21, 0.31, 0.44, 0.76)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_home"]
+bg_color = Color(0.38, 0.72, 0.40, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_work"]
+bg_color = Color(0.58, 0.70, 0.98, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_gym"]
+bg_color = Color(0.64, 0.86, 0.46, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_burger"]
+bg_color = Color(0.92, 0.46, 0.28, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_store"]
+bg_color = Color(0.42, 0.76, 0.88, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_bank"]
+bg_color = Color(0.96, 0.76, 0.30, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_school"]
+bg_color = Color(0.62, 0.50, 0.92, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon_carshop"]
+bg_color = Color(0.30, 0.64, 0.74, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="MapScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.46, 0.70, 0.92, 1)
+
+[node name="SkyGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.96, 0.98, 1, 0.16)
+
+[node name="GroundTint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.58, 0.82, 0.52, 0.18)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 16.0
+offset_right = -44.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+size_flags_horizontal = 3
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HeaderMargin" type="MarginContainer" parent="Content/Layout/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="HeaderColumn" type="VBoxContainer" parent="Content/Layout/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94, 0.70, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+text = "MAP"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn"]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Choose a destination."
+autowrap_mode = 3
+
+[node name="ActionGrid" type="GridContainer" parent="Content/Layout"]
+layout_mode = 2
+columns = 3
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 8
+
+[node name="HomeButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_home")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="HomeMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/HomeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HomeColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/HomeButton/HomeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HomeTitle" type="Label" parent="Content/Layout/ActionGrid/HomeButton/HomeMargin/HomeColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Home"
+
+[node name="HomeIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/HomeButton/HomeMargin/HomeColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_home")
+
+[node name="HomeIconLabel" type="Label" parent="Content/Layout/ActionGrid/HomeButton/HomeMargin/HomeColumn/HomeIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -20.5
+offset_right = 54.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HomeInfo" type="Label" parent="Content/Layout/ActionGrid/HomeButton/HomeMargin/HomeColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Return to your house and handle your daily routines."
+autowrap_mode = 3
+
+[node name="WorkButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_work")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="WorkMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/WorkButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorkColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/WorkButton/WorkMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="WorkTitle" type="Label" parent="Content/Layout/ActionGrid/WorkButton/WorkMargin/WorkColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Work"
+
+[node name="WorkIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/WorkButton/WorkMargin/WorkColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_work")
+
+[node name="WorkIconLabel" type="Label" parent="Content/Layout/ActionGrid/WorkButton/WorkMargin/WorkColumn/WorkIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -20.5
+offset_right = 54.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "WORK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorkInfo" type="Label" parent="Content/Layout/ActionGrid/WorkButton/WorkMargin/WorkColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Travel to the office and complete a normal job shift."
+autowrap_mode = 3
+
+[node name="GymButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_gym")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="GymMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/GymButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GymColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/GymButton/GymMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GymTitle" type="Label" parent="Content/Layout/ActionGrid/GymButton/GymMargin/GymColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Gym"
+
+[node name="GymIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/GymButton/GymMargin/GymColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_gym")
+
+[node name="GymIconLabel" type="Label" parent="Content/Layout/ActionGrid/GymButton/GymMargin/GymColumn/GymIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -20.5
+offset_right = 54.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "GYM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GymInfo" type="Label" parent="Content/Layout/ActionGrid/GymButton/GymMargin/GymColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Travel to the gym for a focused workout session."
+autowrap_mode = 3
+
+[node name="FastFoodButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_burger")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="FastFoodMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/FastFoodButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FastFoodColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/FastFoodButton/FastFoodMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FastFoodTitle" type="Label" parent="Content/Layout/ActionGrid/FastFoodButton/FastFoodMargin/FastFoodColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Burger Town"
+
+[node name="FastFoodIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/FastFoodButton/FastFoodMargin/FastFoodColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_burger")
+
+[node name="FastFoodIconLabel" type="Label" parent="Content/Layout/ActionGrid/FastFoodButton/FastFoodMargin/FastFoodColumn/FastFoodIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -20.5
+offset_right = 76.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "BURGER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FastFoodInfo" type="Label" parent="Content/Layout/ActionGrid/FastFoodButton/FastFoodMargin/FastFoodColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Head to your fast food workplace and entry-level grind."
+autowrap_mode = 3
+
+[node name="StoreButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_store")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="StoreMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/StoreButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StoreColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/StoreButton/StoreMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StoreTitle" type="Label" parent="Content/Layout/ActionGrid/StoreButton/StoreMargin/StoreColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Super Market"
+
+[node name="StoreIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/StoreButton/StoreMargin/StoreColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_store")
+
+[node name="StoreIconLabel" type="Label" parent="Content/Layout/ActionGrid/StoreButton/StoreMargin/StoreColumn/StoreIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -20.5
+offset_right = 64.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StoreInfo" type="Label" parent="Content/Layout/ActionGrid/StoreButton/StoreMargin/StoreColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Visit the store for errands, purchases, and daily supplies."
+autowrap_mode = 3
+
+[node name="BankButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_bank")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="BankMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/BankButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BankColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/BankButton/BankMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BankTitle" type="Label" parent="Content/Layout/ActionGrid/BankButton/BankMargin/BankColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Bank"
+
+[node name="BankIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/BankButton/BankMargin/BankColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_bank")
+
+[node name="BankIconLabel" type="Label" parent="Content/Layout/ActionGrid/BankButton/BankMargin/BankColumn/BankIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -20.5
+offset_right = 54.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "BANK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BankInfo" type="Label" parent="Content/Layout/ActionGrid/BankButton/BankMargin/BankColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Manage money, savings, and daily bank interest."
+autowrap_mode = 3
+
+[node name="SchoolButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_school")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="SchoolMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/SchoolButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SchoolColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/SchoolButton/SchoolMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SchoolTitle" type="Label" parent="Content/Layout/ActionGrid/SchoolButton/SchoolMargin/SchoolColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "School"
+
+[node name="SchoolIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/SchoolButton/SchoolMargin/SchoolColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_school")
+
+[node name="SchoolIconLabel" type="Label" parent="Content/Layout/ActionGrid/SchoolButton/SchoolMargin/SchoolColumn/SchoolIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -20.5
+offset_right = 66.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "STUDY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SchoolInfo" type="Label" parent="Content/Layout/ActionGrid/SchoolButton/SchoolMargin/SchoolColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Improve education, read profession books, and earn credentials."
+autowrap_mode = 3
+
+[node name="CarShopButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_carshop")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="CarShopMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/CarShopButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CarShopColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/CarShopButton/CarShopMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CarShopTitle" type="Label" parent="Content/Layout/ActionGrid/CarShopButton/CarShopMargin/CarShopColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Car Shop"
+
+[node name="CarShopIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/CarShopButton/CarShopMargin/CarShopColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_carshop")
+
+[node name="CarShopIconLabel" type="Label" parent="Content/Layout/ActionGrid/CarShopButton/CarShopMargin/CarShopColumn/CarShopIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -20.5
+offset_right = 72.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "CARS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CarShopInfo" type="Label" parent="Content/Layout/ActionGrid/CarShopButton/CarShopMargin/CarShopColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Buy and equip vehicles to reduce travel time and travel costs."
+autowrap_mode = 3
+
+[node name="ClinicButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_store")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="ClinicMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/ClinicButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClinicColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/ClinicButton/ClinicMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ClinicTitle" type="Label" parent="Content/Layout/ActionGrid/ClinicButton/ClinicMargin/ClinicColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Clinic"
+
+[node name="ClinicIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/ClinicButton/ClinicMargin/ClinicColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_store")
+
+[node name="ClinicIconLabel" type="Label" parent="Content/Layout/ActionGrid/ClinicButton/ClinicMargin/ClinicColumn/ClinicIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -20.5
+offset_right = 76.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "CLINIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClinicInfo" type="Label" parent="Content/Layout/ActionGrid/ClinicButton/ClinicMargin/ClinicColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Restore Health, reduce Stress, and handle hunger damage."
+autowrap_mode = 3
+
+[node name="CasinoButton" type="Button" parent="Content/Layout/ActionGrid"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_bank")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+flat = false
+text = ""
+
+[node name="CasinoMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/CasinoButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CasinoColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/CasinoButton/CasinoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CasinoTitle" type="Label" parent="Content/Layout/ActionGrid/CasinoButton/CasinoMargin/CasinoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Casino"
+
+[node name="CasinoIcon" type="PanelContainer" parent="Content/Layout/ActionGrid/CasinoButton/CasinoMargin/CasinoColumn"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icon_bank")
+
+[node name="CasinoIconLabel" type="Label" parent="Content/Layout/ActionGrid/CasinoButton/CasinoMargin/CasinoColumn/CasinoIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -20.5
+offset_right = 76.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "CASINO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CasinoInfo" type="Label" parent="Content/Layout/ActionGrid/CasinoButton/CasinoMargin/CasinoColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.09, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Play blackjack or slots. Big wins are possible, but losses are real."
+autowrap_mode = 3

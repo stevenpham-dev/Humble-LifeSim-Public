@@ -1,0 +1,478 @@
+
+[gd_scene format=3 uid="uid://dpx3qpywewype"]
+
+[ext_resource type="Script" uid="uid://cyuper5ro08y5" path="res://scripts/HomeScene.gd" id="1_home_script"]
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://djsdsxl2vky3u" path="res://assets/images/sleep.png" id="3_sleep"]
+[ext_resource type="Texture2D" uid="uid://coy4bgrrnpf4a" path="res://assets/images/workout.png" id="4_workout"]
+[ext_resource type="Texture2D" uid="uid://cfmqubg3tcq14" path="res://assets/images/study.png" id="5_study"]
+[ext_resource type="Texture2D" uid="uid://duc5lu4d1cbtp" path="res://assets/images/phone.png" id="6_phone"]
+[ext_resource type="Texture2D" uid="uid://daebxk6mo4h73" path="res://assets/images/car.png" id="7_car"]
+[ext_resource type="Texture2D" uid="uid://bppq3cupik104" path="res://assets/images/work_at_job.png" id="8_work_job"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.21, 0.31, 0.44, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_sleep"]
+bg_color = Color(0.24, 0.36, 0.62, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_pressed"]
+bg_color = Color(0.16, 0.24, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_hover"]
+bg_color = Color(0.36, 0.46, 0.64, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.45)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_workout"]
+bg_color = Color(0.68, 0.26, 0.3, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_study"]
+bg_color = Color(0.72, 0.54, 0.22, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_phone"]
+bg_color = Color(0.22, 0.62, 0.58, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_car"]
+bg_color = Color(0.26, 0.58, 0.32, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_work_job"]
+bg_color = Color(0.42, 0.4, 0.74, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="HomeScene" type="Control" unique_id=1156020182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_home_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=541850069]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32, 0.48, 0.72, 1)
+
+[node name="GradientGlow" type="ColorRect" parent="." unique_id=463708897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.78, 0.92, 1, 0.24)
+
+[node name="Content" type="ScrollContainer" parent="." unique_id=269343915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 14.0
+offset_right = -44.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Layout" type="VBoxContainer" parent="Content" unique_id=1066047222]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="HeaderPanel" type="PanelContainer" parent="Content/Layout" unique_id=1268561635]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HeaderMargin" type="MarginContainer" parent="Content/Layout/HeaderPanel" unique_id=837757076]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="HeaderColumn" type="VBoxContainer" parent="Content/Layout/HeaderPanel/HeaderMargin" unique_id=57191887]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LocationTitle" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn" unique_id=870073827]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+text = "HOME"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn" unique_id=1741022018]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Your home is where you recover, improve yourself, and decide how to spend the day."
+autowrap_mode = 3
+
+[node name="ActionGrid" type="GridContainer" parent="Content/Layout" unique_id=400564951]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="SleepButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=1237282242]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_sleep")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="SleepMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/SleepButton" unique_id=1815147579]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SleepColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/SleepButton/SleepMargin" unique_id=1658378781]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SleepTitle" type="Label" parent="Content/Layout/ActionGrid/SleepButton/SleepMargin/SleepColumn" unique_id=1334394255]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Sleep"
+
+[node name="SleepIcon" type="TextureRect" parent="Content/Layout/ActionGrid/SleepButton/SleepMargin/SleepColumn" unique_id=295433313]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("3_sleep")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SleepInfo" type="Label" parent="Content/Layout/ActionGrid/SleepButton/SleepMargin/SleepColumn" unique_id=1865877122]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 1, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "End the day, recover energy, and begin the next morning."
+autowrap_mode = 3
+
+[node name="WorkoutButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=707409817]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_workout")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="WorkoutMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/WorkoutButton" unique_id=987987047]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorkoutColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/WorkoutButton/WorkoutMargin" unique_id=90223718]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WorkoutTitle" type="Label" parent="Content/Layout/ActionGrid/WorkoutButton/WorkoutMargin/WorkoutColumn" unique_id=728022397]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Workout"
+
+[node name="WorkoutIcon" type="TextureRect" parent="Content/Layout/ActionGrid/WorkoutButton/WorkoutMargin/WorkoutColumn" unique_id=1591852661]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("4_workout")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WorkoutInfo" type="Label" parent="Content/Layout/ActionGrid/WorkoutButton/WorkoutMargin/WorkoutColumn" unique_id=1581223386]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.96, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Train your body, build endurance, and improve fitness."
+autowrap_mode = 3
+
+[node name="StudyButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=29467870]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_study")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="StudyMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/StudyButton" unique_id=168831602]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StudyColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/StudyButton/StudyMargin" unique_id=806312715]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StudyTitle" type="Label" parent="Content/Layout/ActionGrid/StudyButton/StudyMargin/StudyColumn" unique_id=324139105]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Study"
+
+[node name="StudyIcon" type="TextureRect" parent="Content/Layout/ActionGrid/StudyButton/StudyMargin/StudyColumn" unique_id=1336480295]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("5_study")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StudyInfo" type="Label" parent="Content/Layout/ActionGrid/StudyButton/StudyMargin/StudyColumn" unique_id=1744467812]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.94, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Read, learn, and prepare for better jobs and credentials."
+autowrap_mode = 3
+
+[node name="PhoneButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=338844069]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_phone")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="PhoneMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/PhoneButton" unique_id=1446029743]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PhoneColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/PhoneButton/PhoneMargin" unique_id=1341389607]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PhoneTitle" type="Label" parent="Content/Layout/ActionGrid/PhoneButton/PhoneMargin/PhoneColumn" unique_id=1100168658]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Phone"
+
+[node name="PhoneIcon" type="TextureRect" parent="Content/Layout/ActionGrid/PhoneButton/PhoneMargin/PhoneColumn" unique_id=1761012893]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("6_phone")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PhoneInfo" type="Label" parent="Content/Layout/ActionGrid/PhoneButton/PhoneMargin/PhoneColumn" unique_id=1928240547]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.99, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Build relationships, contact employers, and improve job opportunities."
+autowrap_mode = 3
+
+[node name="CarButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=1457231658]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_car")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="CarMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/CarButton" unique_id=1823878279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CarColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/CarButton/CarMargin" unique_id=531894654]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CarTitle" type="Label" parent="Content/Layout/ActionGrid/CarButton/CarMargin/CarColumn" unique_id=458335689]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Car"
+
+[node name="CarIcon" type="TextureRect" parent="Content/Layout/ActionGrid/CarButton/CarMargin/CarColumn" unique_id=2030543123]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("7_car")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CarInfo" type="Label" parent="Content/Layout/ActionGrid/CarButton/CarMargin/CarColumn" unique_id=1752796654]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.94, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Open your travel options, view routes, and head out into town."
+autowrap_mode = 3
+
+[node name="WorkAtJobButton" type="Button" parent="Content/Layout/ActionGrid" unique_id=2072478621]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_card_work_job")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_card_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card_hover")
+
+[node name="WorkAtJobMargin" type="MarginContainer" parent="Content/Layout/ActionGrid/WorkAtJobButton" unique_id=45390952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorkAtJobColumn" type="VBoxContainer" parent="Content/Layout/ActionGrid/WorkAtJobButton/WorkAtJobMargin" unique_id=812395040]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WorkAtJobTitle" type="Label" parent="Content/Layout/ActionGrid/WorkAtJobButton/WorkAtJobMargin/WorkAtJobColumn" unique_id=705231577]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "Work at Job"
+
+[node name="WorkAtJobIcon" type="TextureRect" parent="Content/Layout/ActionGrid/WorkAtJobButton/WorkAtJobMargin/WorkAtJobColumn" unique_id=1921761780]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+texture = ExtResource("8_work_job")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WorkAtJobInfo" type="Label" parent="Content/Layout/ActionGrid/WorkAtJobButton/WorkAtJobMargin/WorkAtJobColumn" unique_id=928699031]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 1, 0.95)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Start your shift, earn money, and gain job EXP."
+autowrap_mode = 3

@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://3xkkb5f7k55j"]
+
+[ext_resource type="Script" uid="uid://bns0hhsa31oqg" path="res://scripts/HUD.gd" id="1_fls4u"]
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_panel"]
+bg_color = Color(0.14, 0.21, 0.34, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="HUD" type="Control" unique_id=1678532008]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fls4u")
+
+[node name="TopBar" type="PanelContainer" parent="." unique_id=338862845]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar_panel")
+
+[node name="TopBarMargin" type="MarginContainer" parent="TopBar" unique_id=171322781]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="TopBarRow" type="HBoxContainer" parent="TopBar/TopBarMargin" unique_id=239429379]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="DayLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=143118846]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Day: 1"
+
+[node name="TimeLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "🕒 08:00 AM"
+
+[node name="MoneyLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1843900837]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "💵 $0"
+
+[node name="EnergyLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1324527443]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "⚡ 100"
+
+[node name="HungerLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1536646293]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "🍔 100"
+
+[node name="HappinessLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=216219802]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "🙂 50"
+
+[node name="HealthLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "❤️ 100"
+
+[node name="MessagePanel" type="PanelContainer" parent="TopBar/TopBarMargin/TopBarRow"]
+custom_minimum_size = Vector2(280, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar_panel")
+
+[node name="MessageMargin" type="MarginContainer" parent="TopBar/TopBarMargin/TopBarRow/MessagePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="MessageLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow/MessagePanel/MessageMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Welcome home."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BottomBar" type="PanelContainer" parent="." unique_id=594166037]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -91.0
+offset_right = -20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar_panel")
+
+[node name="BottomBarMargin" type="MarginContainer" parent="BottomBar" unique_id=477941479]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="ActionsRow" type="HBoxContainer" parent="BottomBar/BottomBarMargin" unique_id=117117009]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HomeButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=656640529]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Home"
+
+[node name="WorkButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=1268021520]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Map"
+
+[node name="JobsButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=2077261796]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Jobs"
+
+[node name="GymButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=1754268184]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Hints"
+
+[node name="InventoryButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow"]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Inventory"
+
+[node name="StatsButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=216732179]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Stats"
+
+[node name="LogsButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=229953540]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Logs"
+
+[node name="SaveButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=2087250921]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Save"
+
+[node name="MenuButton" type="Button" parent="BottomBar/BottomBarMargin/ActionsRow" unique_id=482347897]
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Menu"

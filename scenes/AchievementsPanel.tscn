@@ -1,0 +1,322 @@
+
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/AchievementsPanel.gd" id="2_achievements"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.08, 0.08, 0.10, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar_panel"]
+bg_color = Color(0.12, 0.12, 0.16, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_content_panel"]
+bg_color = Color(0.16, 0.16, 0.18, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_achievement_card"]
+bg_color = Color(0.14, 0.14, 0.18, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.30, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_picker"]
+bg_color = Color(0.18, 0.18, 0.22, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[node name="AchievementsPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_achievements")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(960, 580)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+text = "ACHIEVEMENTS"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="ToolbarPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar_panel")
+
+[node name="ToolbarMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="ToolbarRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FilterLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Show"
+
+[node name="FilterOptionButton" type="OptionButton" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_picker")
+item_count = 3
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Unlocked"
+popup/item_1/id = 1
+popup/item_2/text = "Locked"
+popup/item_2/id = 2
+selected = 0
+
+[node name="Spacer" type="Control" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProgressLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.86, 0.90, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Unlocked: 3 / 20"
+
+[node name="ContentPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_content_panel")
+
+[node name="ContentMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="AchievementScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="AchievementList" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AchievementCard1" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_achievement_card")
+
+[node name="AchievementCard1Margin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard1"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="AchievementCard1Column" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard1/AchievementCard1Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Achievement1Title" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard1/AchievementCard1Margin/AchievementCard1Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "First Paycheck"
+
+[node name="Achievement1Info" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard1/AchievementCard1Margin/AchievementCard1Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Earn money for the first time."
+autowrap_mode = 3
+
+[node name="Achievement1Status" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard1/AchievementCard1Margin/AchievementCard1Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70, 1.00, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Unlocked"
+
+[node name="AchievementCard2" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_achievement_card")
+
+[node name="AchievementCard2Margin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard2"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="AchievementCard2Column" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard2/AchievementCard2Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Achievement2Title" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard2/AchievementCard2Margin/AchievementCard2Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Bookworm"
+
+[node name="Achievement2Info" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard2/AchievementCard2Margin/AchievementCard2Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Read 10 books."
+autowrap_mode = 3
+
+[node name="Achievement2Status" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ContentPanel/ContentMargin/AchievementScroll/AchievementList/AchievementCard2/AchievementCard2Margin/AchievementCard2Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.86, 0.90, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Locked"
+
+[node name="FooterHintLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.78, 0.82, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+text = "Achievements summarize your progress through work, school, health, travel, minigames, casino, and reincarnation."

@@ -1,0 +1,501 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/ReincarnationPanel.gd" id="2_reincarnation"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.10, 0.12, 0.20, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.34)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.17, 0.24, 0.38, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.30, 0.36, 0.70, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.42, 0.52, 0.90, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16, 0.20, 0.46, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.22, 0.32, 0.48, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result"]
+bg_color = Color(0.08, 0.11, 0.20, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1.0, 0.95, 0.70, 0.55)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="ReincarnationPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_reincarnation")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.02, 0.06, 0.66)
+
+[node name="CenterContainer" type="CenterContainer" parent="DimBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="DimBackground/CenterContainer"]
+custom_minimum_size = Vector2(980, 650)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+
+[node name="WindowMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleRow" type="HBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+text = "REINCARNATION"
+
+[node name="CloseButton" type="Button" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="MainScroll" type="ScrollContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContentColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="HeroPanel" type="PanelContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HeroMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="HeroRow" type="HBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel/HeroMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TombstoneTexture" type="TextureRect" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel/HeroMargin/HeroRow"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SummaryColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel/HeroMargin/HeroRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="LifeSummaryLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel/HeroMargin/HeroRow/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Here lies Bobby"
+autowrap_mode = 3
+
+[node name="FormulaLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/HeroPanel/HeroMargin/HeroRow/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.96, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Formula appears here."
+autowrap_mode = 3
+
+[node name="ModePanel" type="PanelContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="ModeMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/ModePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="ModeColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/ModePanel/ModeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ModeRow" type="HBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/ModePanel/ModeMargin/ModeColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ModeLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/ModePanel/ModeMargin/ModeColumn/ModeRow"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Mode"
+
+[node name="ModeOptionButton" type="OptionButton" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/ModePanel/ModeMargin/ModeColumn/ModeRow"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+item_count = 2
+popup/item_0/text = "Balanced Inheritance"
+popup/item_0/id = 0
+popup/item_1/text = "Custom Allocation"
+popup/item_1/id = 1
+selected = 0
+
+[node name="NamePanel" type="PanelContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="NameMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="NameColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel/NameMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameRow" type="HBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel/NameMargin/NameColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel/NameMargin/NameColumn/NameRow"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Next Name"
+
+[node name="NameLineEdit" type="LineEdit" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel/NameMargin/NameColumn/NameRow"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+text = "Bobby"
+placeholder_text = "Bobby"
+clear_button_enabled = true
+
+[node name="KeepSameCheck" type="CheckButton" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/NamePanel/NameMargin/NameColumn/NameRow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Keep same name"
+button_pressed = true
+
+[node name="PreviewPanel" type="PanelContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="PreviewMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="PreviewColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/PreviewPanel/PreviewMargin"]
+layout_mode = 2
+
+[node name="PreviewLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/PreviewPanel/PreviewMargin/PreviewColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Preview appears here."
+autowrap_mode = 3
+
+[node name="AllocationPanel" type="PanelContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="AllocationMargin" type="MarginContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/AllocationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="AllocationColumn" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/AllocationPanel/AllocationMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AllocationStatusLabel" type="Label" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/AllocationPanel/AllocationMargin/AllocationColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Pool: 0 / 0 used"
+
+[node name="AllocationList" type="VBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/MainScroll/ContentColumn/AllocationPanel/AllocationMargin/AllocationColumn"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ButtonRow" type="HBoxContainer" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ReincarnateButton" type="Button" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/ButtonRow"]
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Reincarnate"
+
+[node name="CancelButton" type="Button" parent="DimBackground/CenterContainer/WindowPanel/WindowMargin/MainColumn/ButtonRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Cancel"
+
+[node name="TransitionOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="TransitionDim" type="ColorRect" parent="TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="CenterContainer" type="CenterContainer" parent="TransitionOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransitionPanel" type="PanelContainer" parent="TransitionOverlay/CenterContainer"]
+custom_minimum_size = Vector2(620, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_result")
+
+[node name="TransitionMargin" type="MarginContainer" parent="TransitionOverlay/CenterContainer/TransitionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="TransitionColumn" type="VBoxContainer" parent="TransitionOverlay/CenterContainer/TransitionPanel/TransitionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="HeavenTexture" type="TextureRect" parent="TransitionOverlay/CenterContainer/TransitionPanel/TransitionMargin/TransitionColumn"]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TransitionLabel" type="Label" parent="TransitionOverlay/CenterContainer/TransitionPanel/TransitionMargin/TransitionColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+text = "A new life begins..."
+
+[node name="ResultOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="ResultDim" type="ColorRect" parent="ResultOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.62)
+
+[node name="CenterContainer" type="CenterContainer" parent="ResultOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="ResultOverlay/CenterContainer"]
+custom_minimum_size = Vector2(680, 440)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_result")
+
+[node name="ResultMargin" type="MarginContainer" parent="ResultOverlay/CenterContainer/ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="ResultColumn" type="VBoxContainer" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ResultTitle" type="Label" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "Welcome back, Bobby."
+autowrap_mode = 3
+
+[node name="ResultDetails" type="Label" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Inherited stats appear here."
+autowrap_mode = 3
+
+[node name="BeginButton" type="Button" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Begin New Life"

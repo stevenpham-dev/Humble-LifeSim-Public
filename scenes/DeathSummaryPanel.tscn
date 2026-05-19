@@ -1,0 +1,256 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.08, 0.08, 0.10, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section_panel"]
+bg_color = Color(0.14, 0.14, 0.18, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.30, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rebirth_panel"]
+bg_color = Color(0.10, 0.10, 0.14, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="DeathSummaryPanel" type="Control"]
+visible = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(900, 620)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "LIFE SUMMARY"
+
+[node name="SummaryPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_section_panel")
+
+[node name="SummaryMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="SummaryColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel/SummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DaysLivedLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Days Lived: 146"
+
+[node name="MoneyEarnedLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Total Money Earned: $18,420"
+
+[node name="BestJobLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Highest Job Rank: Programmer III"
+
+[node name="FinalStatsLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Final Core Stats: STR 8 | INT 16 | DISC 12 | CHA 7"
+autowrap_mode = 3
+
+[node name="RebirthPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rebirth_panel")
+
+[node name="RebirthMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/RebirthPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="RebirthColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/RebirthPanel/RebirthMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RebirthTitle" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/RebirthPanel/RebirthMargin/RebirthColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Carry Over"
+
+[node name="RebirthText" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/RebirthPanel/RebirthMargin/RebirthColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "25% of eligible earned growth can be retained for your next life. This is the place to show reincarnation bonuses and long-term progression."
+autowrap_mode = 3
+
+[node name="LegacyPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_section_panel")
+
+[node name="LegacyMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LegacyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="LegacyColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LegacyPanel/LegacyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LegacyTitle" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LegacyPanel/LegacyMargin/LegacyColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Legacy Notes"
+
+[node name="LegacyText" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LegacyPanel/LegacyMargin/LegacyColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "This panel should summarize what happened in the life, what mattered, what was achieved, and what the next life begins with."
+autowrap_mode = 3
+
+[node name="BottomRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BottomRow"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Main Menu"
+
+[node name="ReincarnateButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BottomRow"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Reincarnate"

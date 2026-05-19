@@ -1,0 +1,368 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/BurgerMinigameScene.gd" id="2_burger"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header"]
+bg_color = Color(0.28, 0.42, 0.62, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.82, 0.34, 0.36)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.22, 0.34, 0.50, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_message"]
+bg_color = Color(0.23, 0.36, 0.55, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result_panel"]
+bg_color = Color(0.12, 0.18, 0.28, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1.0, 0.92, 0.62, 0.45)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="BurgerMinigameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_burger")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.48, 0.66, 0.86, 1)
+
+[node name="WarmGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.0, 0.55, 0.18, 0.18)
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.85, 1.0, 0.08)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = 16.0
+offset_right = -42.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="TopRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LocationTitle" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 34
+text = "BURGER SHIFT"
+
+[node name="WalletLabel" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Wallet: $0"
+
+[node name="BackButton" type="Button" parent="Content/Layout/TopRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "No More"
+
+[node name="HeaderPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_header")
+
+[node name="HeaderMargin" type="MarginContainer" parent="Content/Layout/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="HeaderColumn" type="VBoxContainer" parent="Content/Layout/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="OrderLabel" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Order: Bottom Bun → Meat Patty → Cheese → Ketchup → Mustard → Onion → Pickles → Top Bun"
+autowrap_mode = 3
+
+[node name="StreakLabel" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.90, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Current streak: 0 | Best: 0"
+
+[node name="ProgressLabel" type="Label" parent="Content/Layout/HeaderPanel/HeaderMargin/HeaderColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Progress: 0 / 8"
+
+[node name="GamePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="GameMargin" type="MarginContainer" parent="Content/Layout/GamePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="MainRow" type="HBoxContainer" parent="Content/Layout/GamePanel/GameMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="OrderPanel" type="PanelContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="OrderMargin" type="MarginContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow/OrderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="OrderList" type="VBoxContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow/OrderPanel/OrderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CardPanel" type="PanelContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="CardMargin" type="MarginContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow/CardPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="CardGrid" type="GridContainer" parent="Content/Layout/GamePanel/GameMargin/MainRow/CardPanel/CardMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+
+[node name="MessagePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="MessageLabel" type="Label" parent="Content/Layout/MessagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Click the ingredient cards in the correct order."
+autowrap_mode = 3
+
+[node name="ResultOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="OverlayDim" type="ColorRect" parent="ResultOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.58)
+
+[node name="CenterContainer" type="CenterContainer" parent="ResultOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="ResultOverlay/CenterContainer"]
+custom_minimum_size = Vector2(620, 430)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_result_panel")
+
+[node name="ResultMargin" type="MarginContainer" parent="ResultOverlay/CenterContainer/ResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="ResultColumn" type="VBoxContainer" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ResultIcon" type="TextureRect" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+custom_minimum_size = Vector2(0, 165)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ResultTitle" type="Label" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+text = "Well done!"
+
+[node name="ResultDetails" type="Label" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Rewards appear here."
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn/ButtonRow"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Play Again"
+
+[node name="NoMoreButton" type="Button" parent="ResultOverlay/CenterContainer/ResultPanel/ResultMargin/ResultColumn/ButtonRow"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "No More"

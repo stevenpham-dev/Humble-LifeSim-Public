@@ -1,0 +1,355 @@
+
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.08, 0.08, 0.1, 0.90)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_card"]
+bg_color = Color(0.10, 0.10, 0.14, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.3, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_box"]
+bg_color = Color(0.14, 0.14, 0.18, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="RelationshipScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34)
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 110
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LocationTitle" type="Label" parent="Content/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "RELATIONSHIPS"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Talk to people, build trust, lower stress, and improve social opportunities that may affect work and life."
+autowrap_mode = 3
+
+[node name="NPCSummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_card")
+
+[node name="NPCSummaryMargin" type="MarginContainer" parent="Content/Layout/NPCSummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="NPCSummaryColumn" type="VBoxContainer" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NPCNameLabel" type="Label" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin/NPCSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "NPC: Alex"
+
+[node name="PersonalityLabel" type="Label" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin/NPCSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Personality: Hardworking, practical"
+
+[node name="JobLabel" type="Label" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin/NPCSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Job: Store Manager"
+
+[node name="CompanyLabel" type="Label" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin/NPCSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Company: McBuns"
+
+[node name="RelationshipLabel" type="Label" parent="Content/Layout/NPCSummaryPanel/NPCSummaryMargin/NPCSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Relationship: 100"
+
+[node name="InteractionPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="InteractionMargin" type="MarginContainer" parent="Content/Layout/InteractionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="InteractionColumn" type="VBoxContainer" parent="Content/Layout/InteractionPanel/InteractionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="InteractionTitle" type="Label" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Interaction Options"
+
+[node name="InteractionRow" type="HBoxContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TalkButton" type="Button" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InteractionRow"]
+custom_minimum_size = Vector2(140, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Talk"
+
+[node name="AskMoneyButton" type="Button" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InteractionRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Ask for Money"
+
+[node name="AskReferralButton" type="Button" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InteractionRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Ask Referral"
+
+[node name="NextPersonButton" type="Button" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InteractionRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Next Person"
+
+[node name="InfluenceInfoRow" type="HBoxContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="InfluenceInfo1" type="PanelContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="InfluenceInfo1Margin" type="MarginContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo1"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="InfluenceInfo1Label" type="Label" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo1/InfluenceInfo1Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Talking can reduce stress."
+autowrap_mode = 3
+
+[node name="InfluenceInfo2" type="PanelContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="InfluenceInfo2Margin" type="MarginContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo2"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="InfluenceInfo2Label" type="Label" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo2/InfluenceInfo2Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Higher relationship can unlock better job chances."
+autowrap_mode = 3
+
+[node name="InfluenceInfo3" type="PanelContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="InfluenceInfo3Margin" type="MarginContainer" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo3"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="InfluenceInfo3Label" type="Label" parent="Content/Layout/InteractionPanel/InteractionMargin/InteractionColumn/InfluenceInfoRow/InfluenceInfo3/InfluenceInfo3Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Some people may help or hurt your opportunities."
+autowrap_mode = 3
+
+[node name="DialoguePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="DialogueMargin" type="MarginContainer" parent="Content/Layout/DialoguePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="DialogueColumn" type="VBoxContainer" parent="Content/Layout/DialoguePanel/DialogueMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DialogueTitle" type="Label" parent="Content/Layout/DialoguePanel/DialogueMargin/DialogueColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Conversation"
+
+[node name="DialogueText" type="Label" parent="Content/Layout/DialoguePanel/DialogueMargin/DialogueColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Use conversations, praise, and advice to build relationship, manage stress, and gain small stat insights."
+autowrap_mode = 3

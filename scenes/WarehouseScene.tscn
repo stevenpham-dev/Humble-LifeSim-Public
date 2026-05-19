@@ -1,0 +1,308 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.08, 0.08, 0.10, 0.90)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_card"]
+bg_color = Color(0.10, 0.10, 0.14, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_box"]
+bg_color = Color(0.14, 0.14, 0.18, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.30, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="WarehouseScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34)
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 110
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LocationTitle" type="Label" parent="Content/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "WAREHOUSE"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "A physical job path built around strength, endurance, and pushing through longer, heavier shifts."
+autowrap_mode = 3
+
+[node name="WarehouseSummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_card")
+
+[node name="WarehouseSummaryMargin" type="MarginContainer" parent="Content/Layout/WarehouseSummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="WarehouseSummaryColumn" type="VBoxContainer" parent="Content/Layout/WarehouseSummaryPanel/WarehouseSummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CurrentWarehouseJobLabel" type="Label" parent="Content/Layout/WarehouseSummaryPanel/WarehouseSummaryMargin/WarehouseSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Current Job: Warehouse Helper I"
+
+[node name="WarehousePayLabel" type="Label" parent="Content/Layout/WarehouseSummaryPanel/WarehouseSummaryMargin/WarehouseSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Pay per shift: $150"
+
+[node name="WarehouseShiftLabel" type="Label" parent="Content/Layout/WarehouseSummaryPanel/WarehouseSummaryMargin/WarehouseSummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Shift demand: high physical effort"
+
+[node name="ActionPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="ActionMargin" type="MarginContainer" parent="Content/Layout/ActionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="ActionColumn" type="VBoxContainer" parent="Content/Layout/ActionPanel/ActionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ActionTitle" type="Label" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Warehouse Actions"
+
+[node name="ActionRow" type="HBoxContainer" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="WorkShiftButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionRow"]
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Work Shift"
+
+[node name="LiftLoadButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionRow"]
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Heavy Task"
+
+[node name="TalkSupervisorButton" type="Button" parent="Content/Layout/ActionPanel/ActionMargin/ActionColumn/ActionRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Talk Supervisor"
+
+[node name="InfoRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="InfoBox1" type="PanelContainer" parent="Content/Layout/InfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="InfoBox1Margin" type="MarginContainer" parent="Content/Layout/InfoRow/InfoBox1"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="InfoBox1Label" type="Label" parent="Content/Layout/InfoRow/InfoBox1/InfoBox1Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Physical path: strength and endurance matter most."
+autowrap_mode = 3
+
+[node name="InfoBox2" type="PanelContainer" parent="Content/Layout/InfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="InfoBox2Margin" type="MarginContainer" parent="Content/Layout/InfoRow/InfoBox2"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="InfoBox2Label" type="Label" parent="Content/Layout/InfoRow/InfoBox2/InfoBox2Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Good future home for fatigue, injury risk, and hard-work promotion mechanics."
+autowrap_mode = 3
+
+[node name="NotesPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="NotesMargin" type="MarginContainer" parent="Content/Layout/NotesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="NotesColumn" type="VBoxContainer" parent="Content/Layout/NotesPanel/NotesMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NotesTitle" type="Label" parent="Content/Layout/NotesPanel/NotesMargin/NotesColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Warehouse Notes"
+
+[node name="NotesText" type="Label" parent="Content/Layout/NotesPanel/NotesMargin/NotesColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "This scene should become the main location for physical jobs, labor progression, and health/endurance tradeoffs."
+autowrap_mode = 3

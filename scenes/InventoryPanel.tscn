@@ -1,0 +1,497 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/InventoryPanel.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window_panel"]
+bg_color = Color(0.18, 0.26, 0.38, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.88, 0.42, 0.35)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar_panel"]
+bg_color = Color(0.22, 0.32, 0.46, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grid_panel"]
+bg_color = Color(0.20, 0.30, 0.44, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_detail_panel"]
+bg_color = Color(0.22, 0.30, 0.44, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_footer_panel"]
+bg_color = Color(0.20, 0.28, 0.40, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_picker"]
+bg_color = Color(0.22, 0.32, 0.50, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_search_box"]
+bg_color = Color(0.22, 0.32, 0.48, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_image_panel"]
+bg_color = Color(0.21, 0.31, 0.44, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="InventoryPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.10, 0.22)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1180, 680)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window_panel")
+
+[node name="WindowMargin" type="MarginContainer" parent="CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="MainColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "INVENTORY"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/TitleRow"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Close"
+
+[node name="ToolbarPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar_panel")
+
+[node name="ToolbarMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="ToolbarRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CategoryLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Category"
+
+[node name="CategoryOptionButton" type="OptionButton" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_picker")
+
+[node name="SearchLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Search"
+
+[node name="SearchLineEdit" type="LineEdit" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+custom_minimum_size = Vector2(210, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_search_box")
+placeholder_text = "Search inventory..."
+clear_button_enabled = true
+
+[node name="SortLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Sort"
+
+[node name="SortOptionButton" type="OptionButton" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_picker")
+
+[node name="Spacer" type="Control" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemCountLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/ToolbarPanel/ToolbarMargin/ToolbarRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90, 0.92, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Items: 0 | Slots: 12"
+
+[node name="BodyRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="GridPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_grid_panel")
+
+[node name="GridMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/GridPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="ItemScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/GridPanel/GridMargin"]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemGrid" type="GridContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/GridPanel/GridMargin/ItemScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+
+[node name="DetailPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_detail_panel")
+
+[node name="DetailMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="DetailColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DetailTitleLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 23
+text = "No Item Selected"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DetailScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="DetailScrollColumn" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="DetailImagePanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn"]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_image_panel")
+
+[node name="DetailImageMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn/DetailImagePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="DetailImage" type="TextureRect" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn/DetailImagePanel/DetailImageMargin"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 146)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DetailCategoryLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Category: -"
+
+[node name="DetailQuantityLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.90, 0.55, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Owned: 0"
+
+[node name="DetailDescriptionLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.98, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Select an item to view details."
+autowrap_mode = 3
+
+[node name="DetailEffectsLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/DetailScroll/DetailScrollColumn"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 1, 0.82, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = ""
+autowrap_mode = 3
+
+[node name="ActionRows" type="VBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="UseRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="UseButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows/UseRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Use"
+
+[node name="EatUntilFullButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows/UseRow"]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Eat Until Full"
+
+[node name="DropRow" type="HBoxContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="SecondaryButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows/DropRow"]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Drop 1"
+
+[node name="DropFiveButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows/DropRow"]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Drop 5"
+
+[node name="DropAllButton" type="Button" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/BodyRow/DetailPanel/DetailMargin/DetailColumn/ActionRows/DropRow"]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Drop All"
+
+[node name="FooterPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_footer_panel")
+
+[node name="FooterMargin" type="MarginContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/FooterPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="FooterHintLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/FooterPanel/FooterMargin"]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.90, 0.96, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "Your inventory starts with 12 visible slots and expands by rows as you collect more items."
+horizontal_alignment = 1
+autowrap_mode = 3

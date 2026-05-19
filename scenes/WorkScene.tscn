@@ -1,0 +1,303 @@
+
+[gd_scene format=3 uid="uid://bmeyh3bjt1wik"]
+
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_card"]
+bg_color = Color(0.1, 0.1, 0.14, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.4, 0.22)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.08, 0.08, 0.1, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.18, 0.22, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.12, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.24, 0.3, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toggle_box"]
+bg_color = Color(0.14, 0.14, 0.18, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="WorkScene" type="Control" unique_id=1091015118]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1167141291]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1570295290]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34)
+
+[node name="Content" type="MarginContainer" parent="." unique_id=580007508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 110
+
+[node name="Layout" type="VBoxContainer" parent="Content" unique_id=2122299044]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LocationTitle" type="Label" parent="Content/Layout" unique_id=33551311]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "WORK"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout" unique_id=1967048365]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Manage your job, complete shifts, and work toward your next promotion."
+autowrap_mode = 3
+
+[node name="JobSummaryPanel" type="PanelContainer" parent="Content/Layout" unique_id=1254421049]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_card")
+
+[node name="JobSummaryMargin" type="MarginContainer" parent="Content/Layout/JobSummaryPanel" unique_id=1704815818]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="JobSummaryColumn" type="VBoxContainer" parent="Content/Layout/JobSummaryPanel/JobSummaryMargin" unique_id=1494845391]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CurrentJobLabel" type="Label" parent="Content/Layout/JobSummaryPanel/JobSummaryMargin/JobSummaryColumn" unique_id=117143522]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "Current Job: Cashier I"
+
+[node name="PayLabel" type="Label" parent="Content/Layout/JobSummaryPanel/JobSummaryMargin/JobSummaryColumn" unique_id=1887784968]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.92, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Pay per shift: $120"
+
+[node name="PromotionLabel" type="Label" parent="Content/Layout/JobSummaryPanel/JobSummaryMargin/JobSummaryColumn" unique_id=841449994]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.92, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Promotion progress: 30 / 100 EXP"
+
+[node name="ShiftLabel" type="Label" parent="Content/Layout/JobSummaryPanel/JobSummaryMargin/JobSummaryColumn" unique_id=844133227]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.92, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Shift length: 4 hours"
+
+[node name="ActionsPanel" type="PanelContainer" parent="Content/Layout" unique_id=66251017]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="ActionsMargin" type="MarginContainer" parent="Content/Layout/ActionsPanel" unique_id=170545605]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="ActionsColumn" type="VBoxContainer" parent="Content/Layout/ActionsPanel/ActionsMargin" unique_id=656707765]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ActionsTitle" type="Label" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn" unique_id=280780734]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Actions"
+
+[node name="ActionsRow" type="HBoxContainer" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn" unique_id=1043802880]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="WorkNowButton" type="Button" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/ActionsRow" unique_id=2058085686]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Work Now"
+
+[node name="OpenJobBoardButton" type="Button" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/ActionsRow" unique_id=1527735882]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Open Job Board"
+
+[node name="LeaveJobButton" type="Button" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/ActionsRow" unique_id=1266085170]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Leave Job"
+
+[node name="MinigamePanel" type="PanelContainer" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn" unique_id=648279273]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toggle_box")
+
+[node name="MinigameMargin" type="MarginContainer" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/MinigamePanel" unique_id=1107962093]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="MinigameRow" type="HBoxContainer" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/MinigamePanel/MinigameMargin" unique_id=1517553048]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayMinigameCheckBox" type="CheckBox" parent="Content/Layout/ActionsPanel/ActionsMargin/ActionsColumn/MinigamePanel/MinigameMargin/MinigameRow" unique_id=105517324]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+button_pressed = true
+text = "Play burger minigame before finishing shift"
+
+[node name="InfoPanel" type="PanelContainer" parent="Content/Layout" unique_id=649233950]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="InfoMargin" type="MarginContainer" parent="Content/Layout/InfoPanel" unique_id=512451213]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="InfoColumn" type="VBoxContainer" parent="Content/Layout/InfoPanel/InfoMargin" unique_id=618753724]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InfoTitle" type="Label" parent="Content/Layout/InfoPanel/InfoMargin/InfoColumn" unique_id=764300946]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Work Notes"
+
+[node name="InfoText" type="Label" parent="Content/Layout/InfoPanel/InfoMargin/InfoColumn" unique_id=1072490297]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Working earns money, job EXP, and may improve your career over time. Higher level jobs pay more and usually need better stats."
+autowrap_mode = 3
+
+[node name="TipText" type="Label" parent="Content/Layout/InfoPanel/InfoMargin/InfoColumn" unique_id=409785094]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 16
+text = "Tip: Work through the Office, manage Energy and Stress, and use Phone relationships to improve career progress."
+autowrap_mode = 3

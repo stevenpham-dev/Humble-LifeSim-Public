@@ -1,0 +1,611 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/CasinoScene.gd" id="2_casino"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_summary"]
+bg_color = Color(0.30, 0.24, 0.50, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0, 0.84, 0.34, 0.38)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.18, 0.24, 0.42, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_subpanel"]
+bg_color = Color(0.22, 0.30, 0.50, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_message"]
+bg_color = Color(0.20, 0.26, 0.44, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.10)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.30, 0.36, 0.70, 0.96)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.42, 0.52, 0.90, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16, 0.20, 0.46, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.22, 0.38, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CasinoScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_casino")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.36, 0.42, 0.74, 1)
+
+[node name="GoldGlow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.0, 0.72, 0.18, 0.18)
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.85, 1.0, 0.08)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 18.0
+offset_right = -48.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="TopRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LocationTitle" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "CASINO"
+
+[node name="WalletLabel" type="Label" parent="Content/Layout/TopRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 21
+text = "Wallet: $0"
+
+[node name="BackButton" type="Button" parent="Content/Layout/TopRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Back"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Use cash to play Blackjack or Slots. The bet slider goes from $0 to all wallet cash. Casino actions pass time and can affect Food, Health, Stress, and Happiness."
+autowrap_mode = 3
+
+[node name="SummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_summary")
+
+[node name="SummaryMargin" type="MarginContainer" parent="Content/Layout/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="SummaryColumn" type="VBoxContainer" parent="Content/Layout/SummaryPanel/SummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SummaryLabel" type="Label" parent="Content/Layout/SummaryPanel/SummaryMargin/SummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Casino stats appear here."
+autowrap_mode = 3
+
+[node name="GameTabRow" type="HBoxContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BlackjackTabButton" type="Button" parent="Content/Layout/GameTabRow"]
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Blackjack"
+
+[node name="SlotsTabButton" type="Button" parent="Content/Layout/GameTabRow"]
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Slots"
+
+[node name="BlackjackPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="BlackjackMargin" type="MarginContainer" parent="Content/Layout/BlackjackPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="BlackjackColumn" type="VBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BlackjackTitle" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+text = "Blackjack"
+
+[node name="BetPanel" type="PanelContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_subpanel")
+
+[node name="BetMargin" type="MarginContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="BetColumn" type="VBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BetHint" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Bet with cash. Left = $0, right = all wallet cash."
+
+[node name="BetRow" type="HBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BetSlider" type="HSlider" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100
+step = 1
+
+[node name="BetLineEdit" type="LineEdit" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+text = "0"
+placeholder_text = "0"
+
+[node name="MaxBetButton" type="Button" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Max"
+
+[node name="DealButton" type="Button" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Deal"
+
+[node name="DealerPanel" type="PanelContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_subpanel")
+
+[node name="DealerMargin" type="MarginContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/DealerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="DealerColumn" type="VBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/DealerPanel/DealerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DealerTitle" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/DealerPanel/DealerMargin/DealerColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Dealer"
+
+[node name="DealerValueLabel" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/DealerPanel/DealerMargin/DealerColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Value: ?"
+
+[node name="DealerCardsRow" type="HBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/DealerPanel/DealerMargin/DealerColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerPanel" type="PanelContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_subpanel")
+
+[node name="PlayerMargin" type="MarginContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/PlayerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="PlayerColumn" type="VBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/PlayerPanel/PlayerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayerTitle" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/PlayerPanel/PlayerMargin/PlayerColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "You"
+
+[node name="PlayerValueLabel" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/PlayerPanel/PlayerMargin/PlayerColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Value: 0"
+
+[node name="PlayerCardsRow" type="HBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/PlayerPanel/PlayerMargin/PlayerColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ActionRow" type="HBoxContainer" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HitButton" type="Button" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/ActionRow"]
+custom_minimum_size = Vector2(130, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Hit"
+
+[node name="StandButton" type="Button" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/ActionRow"]
+custom_minimum_size = Vector2(130, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Stand"
+
+[node name="NewRoundButton" type="Button" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn/ActionRow"]
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "New Round"
+
+[node name="BlackjackResultLabel" type="Label" parent="Content/Layout/BlackjackPanel/BlackjackMargin/BlackjackColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Place a bet and deal to begin."
+autowrap_mode = 3
+
+[node name="SlotsPanel" type="PanelContainer" parent="Content/Layout"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="SlotsMargin" type="MarginContainer" parent="Content/Layout/SlotsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="SlotsColumn" type="VBoxContainer" parent="Content/Layout/SlotsPanel/SlotsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SlotsTitle" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+text = "Slots"
+
+[node name="SlotsInfo" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Payouts: three 7s = 8x, three diamonds = 5x, any triple = 3x, two 7s = 2x, any pair = 1.5x."
+autowrap_mode = 3
+
+[node name="BetPanel" type="PanelContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_subpanel")
+
+[node name="BetMargin" type="MarginContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="BetColumn" type="VBoxContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BetHint" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Bet with cash. Left = $0, right = all wallet cash."
+
+[node name="BetRow" type="HBoxContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BetSlider" type="HSlider" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100
+step = 1
+
+[node name="BetLineEdit" type="LineEdit" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+text = "0"
+placeholder_text = "0"
+
+[node name="MaxBetButton" type="Button" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Max"
+
+[node name="SpinButton" type="Button" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/BetPanel/BetMargin/BetColumn/BetRow"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Spin"
+
+[node name="ReelPanel" type="PanelContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_subpanel")
+
+[node name="ReelMargin" type="MarginContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/ReelPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="ReelRow" type="HBoxContainer" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/ReelPanel/ReelMargin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Reel1Label" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/ReelPanel/ReelMargin/ReelRow"]
+custom_minimum_size = Vector2(120, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 46
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "?"
+
+[node name="Reel2Label" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/ReelPanel/ReelMargin/ReelRow"]
+custom_minimum_size = Vector2(120, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 46
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "?"
+
+[node name="Reel3Label" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn/ReelPanel/ReelMargin/ReelRow"]
+custom_minimum_size = Vector2(120, 110)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 46
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "?"
+
+[node name="SlotsResultLabel" type="Label" parent="Content/Layout/SlotsPanel/SlotsMargin/SlotsColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Choose a bet and spin."
+autowrap_mode = 3
+
+[node name="MessagePanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_message")
+
+[node name="MessageLabel" type="Label" parent="Content/Layout/MessagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Casino messages appear here."
+autowrap_mode = 3

@@ -1,0 +1,324 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/fonts.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/SchoolScene.gd" id="2_school"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.21, 0.31, 0.44, 0.90)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight_card"]
+bg_color = Color(0.27, 0.40, 0.60, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.82, 0.40, 0.22)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.38, 0.66, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34, 0.54, 0.86, 0.98)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.22, 0.42, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_box"]
+bg_color = Color(0.24, 0.34, 0.48, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.06)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="SchoolScene" type="Control"]
+script = ExtResource("2_school")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42, 0.56, 0.82, 1)
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 18.0
+offset_right = -50.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Layout" type="VBoxContainer" parent="Content"]
+size_flags_horizontal = 3
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LocationTitle" type="Label" parent="Content/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 36
+text = "SCHOOL"
+
+[node name="DescriptionLabel" type="Label" parent="Content/Layout"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Choose a credential track, learn facts, read books, and pass exams to unlock better careers."
+autowrap_mode = 3
+
+[node name="StudySummaryPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight_card")
+
+[node name="StudySummaryMargin" type="MarginContainer" parent="Content/Layout/StudySummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="StudySummaryColumn" type="VBoxContainer" parent="Content/Layout/StudySummaryPanel/StudySummaryMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StudySummaryTitle" type="Label" parent="Content/Layout/StudySummaryPanel/StudySummaryMargin/StudySummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "School Progress"
+
+[node name="StudySummaryText" type="Label" parent="Content/Layout/StudySummaryPanel/StudySummaryMargin/StudySummaryColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.97, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Education, Intelligence, Endurance, Food, and earned credentials will update here."
+autowrap_mode = 3
+
+[node name="StudyPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="StudyMargin" type="MarginContainer" parent="Content/Layout/StudyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="StudyColumn" type="VBoxContainer" parent="Content/Layout/StudyPanel/StudyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="StudyTitle" type="Label" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Credential Actions"
+
+[node name="StudyButtonsRow" type="HBoxContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StudyButton" type="Button" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyButtonsRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Learn"
+
+[node name="ReadBookButton" type="Button" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyButtonsRow"]
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Read Book"
+
+[node name="OpenBookcaseButton" type="Button" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyButtonsRow"]
+custom_minimum_size = Vector2(170, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "Take Exam"
+
+[node name="StudyInfoRow" type="HBoxContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StudyInfo1" type="PanelContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="StudyInfo1Margin" type="MarginContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo1"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="StudyInfo1Label" type="Label" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo1/StudyInfo1Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Learn: 3 hours, free, +1 progress when not maxed, and track-specific stat gains."
+autowrap_mode = 3
+
+[node name="StudyInfo2" type="PanelContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="StudyInfo2Margin" type="MarginContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo2"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="StudyInfo2Label" type="Label" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo2/StudyInfo2Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Read Book: consumes 1 matching book, +3 progress when not maxed, and stronger book-specific stat gains."
+autowrap_mode = 3
+
+[node name="StudyInfo3" type="PanelContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_box")
+
+[node name="StudyInfo3Margin" type="MarginContainer" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo3"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="StudyInfo3Label" type="Label" parent="Content/Layout/StudyPanel/StudyMargin/StudyColumn/StudyInfoRow/StudyInfo3/StudyInfo3Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 17
+text = "Take Exam: answer 3 questions and pass with at least 2 correct."
+autowrap_mode = 3
+
+[node name="NotesPanel" type="PanelContainer" parent="Content/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="NotesMargin" type="MarginContainer" parent="Content/Layout/NotesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="NotesColumn" type="VBoxContainer" parent="Content/Layout/NotesPanel/NotesMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NotesTitle" type="Label" parent="Content/Layout/NotesPanel/NotesMargin/NotesColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 22
+text = "Credential Notes and Exam"
+
+[node name="NotesText" type="Label" parent="Content/Layout/NotesPanel/NotesMargin/NotesColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "Select a credential track. Learn gives track-specific stat gains. Reading matching books gives stronger gains; after progress is maxed, reading gives +1 extra to each book stat."
+autowrap_mode = 3

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cnrpe6jytnaic"]
+
+[ext_resource type="Script" uid="uid://bbdu03ukeswao" path="res://scripts/MainMenu.gd" id="1_yqorp"]
+[ext_resource type="FontFile" uid="uid://i41pc6cpl7uq" path="res://assets/fonts/fonts.ttf" id="2_2wh52"]
+[ext_resource type="Texture2D" uid="uid://lqgi3quhxc01" path="res://assets/images/GameMenu_camaro_1.png" id="2_ow34m"]
+
+[node name="MainMenu" type="Control" unique_id=1105236603]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqorp")
+
+[node name="Background" type="TextureRect" parent="." unique_id=919140311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ow34m")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Center" type="CenterContainer" parent="." unique_id=833857898]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="VBoxContainer" parent="Center" unique_id=1411257298]
+layout_mode = 2
+
+[node name="TitleWrap" type="Control" parent="Center/Layout" unique_id=621816866]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Layout/TitleWrap" unique_id=1387260519]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.5
+offset_top = -133.5
+offset_right = 220.5
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.16862746, 0.05882353, 0.7882353, 1)
+theme_override_colors/font_shadow_color = Color(0.0031562939, 0.0006077929, 0.010481979, 1)
+theme_override_fonts/font = ExtResource("2_2wh52")
+theme_override_font_sizes/font_size = 92
+text = "Humble LifeSim"
+
+[node name="NewGameButton" type="Button" parent="Center/Layout" unique_id=914008791]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="Center/Layout" unique_id=506560628]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="SavedGamesButton" type="Button" parent="Center/Layout" unique_id=912973657]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Saved Games"
+
+[node name="SettingsButton" type="Button" parent="Center/Layout" unique_id=1504626972]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="AchievementsButton" type="Button" parent="Center/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Achievements"
