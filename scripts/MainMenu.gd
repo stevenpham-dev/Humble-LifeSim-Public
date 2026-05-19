@@ -15,6 +15,7 @@ const ACHIEVEMENTS_PANEL_PATH := "res://scenes/AchievementsPanel.tscn"
 @onready var achievements_button: Button = $Center/Layout/AchievementsButton
 
 var project_info_button: Button = null
+var quit_game_button: Button = null
 var project_info_overlay: Control = null
 
 @onready var buttons := [
@@ -51,11 +52,25 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings_pressed)
 	achievements_button.pressed.connect(_on_achievements_pressed)
 	_ensure_project_info_button()
+	_ensure_quit_game_button()
 
 	continue_button.disabled = not SaveManager.has_any_saves()
 
 	_setup_button_anims()
 	_start_title_sway()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_F11:
+			_toggle_fullscreen_shortcut()
+			get_viewport().set_input_as_handled()
+
+
+func _toggle_fullscreen_shortcut() -> void:
+	_play_ui_click()
+	if SettingsData != null and SettingsData.has_method("toggle_fullscreen"):
+		SettingsData.toggle_fullscreen(true)
 
 
 func _play_ui_click() -> void:
@@ -140,6 +155,26 @@ func _ensure_project_info_button() -> void:
 	layout_node.add_child(project_info_button)
 	buttons.append(project_info_button)
 
+
+
+func _ensure_quit_game_button() -> void:
+	if quit_game_button != null:
+		return
+
+	var layout_node := $Center/Layout
+	quit_game_button = Button.new()
+	quit_game_button.name = "QuitGameButton"
+	quit_game_button.text = "Quit Game"
+	quit_game_button.focus_mode = Control.FOCUS_NONE
+	quit_game_button.add_theme_font_size_override("font_size", 32)
+	quit_game_button.pressed.connect(_on_quit_game_pressed)
+	layout_node.add_child(quit_game_button)
+	buttons.append(quit_game_button)
+
+
+func _on_quit_game_pressed() -> void:
+	_play_ui_click()
+	get_tree().quit()
 
 func _on_project_info_pressed() -> void:
 	_play_ui_click()

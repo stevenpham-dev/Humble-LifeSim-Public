@@ -1,4 +1,3 @@
-
 extends Node
 
 signal settings_changed
@@ -17,6 +16,12 @@ const DEFAULT_SHOW_POPUP_NOTIFICATIONS := true
 const DEFAULT_DIM_MODE_ENABLED := false
 const DEFAULT_SHOW_TUTORIAL_ON_NEW_GAME := true
 const DEFAULT_GOALS_MILESTONES_ENABLED := true
+const DEFAULT_CONFIRMATION_PANELS_ENABLED := true
+const DEFAULT_CONFIRMATION_PANEL_OPTIONS := {
+	"travel": true,
+	"burger_minigame_result": true,
+	"save_delete": true
+}
 
 # Audio
 var master_volume: float = DEFAULT_MASTER_VOLUME
@@ -32,6 +37,8 @@ var show_popup_notifications: bool = DEFAULT_SHOW_POPUP_NOTIFICATIONS
 var dim_mode_enabled: bool = DEFAULT_DIM_MODE_ENABLED
 var show_tutorial_on_new_game: bool = DEFAULT_SHOW_TUTORIAL_ON_NEW_GAME
 var goals_milestones_enabled: bool = DEFAULT_GOALS_MILESTONES_ENABLED
+var confirmation_panels_enabled: bool = DEFAULT_CONFIRMATION_PANELS_ENABLED
+var confirmation_panel_options: Dictionary = DEFAULT_CONFIRMATION_PANEL_OPTIONS.duplicate(true)
 
 func set_defaults() -> void:
 	master_volume = DEFAULT_MASTER_VOLUME
@@ -43,6 +50,79 @@ func set_defaults() -> void:
 	dim_mode_enabled = DEFAULT_DIM_MODE_ENABLED
 	show_tutorial_on_new_game = DEFAULT_SHOW_TUTORIAL_ON_NEW_GAME
 	goals_milestones_enabled = DEFAULT_GOALS_MILESTONES_ENABLED
+	confirmation_panels_enabled = DEFAULT_CONFIRMATION_PANELS_ENABLED
+	confirmation_panel_options = DEFAULT_CONFIRMATION_PANEL_OPTIONS.duplicate(true)
+
+
+func get_confirmation_panel_definitions() -> Array[Dictionary]:
+	return [
+		{
+			"id": "travel",
+			"name": "Travel Confirmations",
+			"description": "Show the destination, travel time, and travel cost before moving."
+		},
+		{
+			"id": "burger_minigame_result",
+			"name": "Burger Town Result Panel",
+			"description": "Show the Play Again / No More result panel after each burger round."
+		},
+		{
+			"id": "save_delete",
+			"name": "Delete Save Confirmation",
+			"description": "Ask before permanently deleting a save slot."
+		}
+	]
+
+
+func is_confirmation_enabled(panel_id: String) -> bool:
+	if not confirmation_panels_enabled:
+		return false
+	return get_confirmation_panel_option_stored(panel_id)
+
+
+func get_confirmation_panel_option_stored(panel_id: String) -> bool:
+	_ensure_confirmation_panel_option(panel_id)
+	return bool(confirmation_panel_options.get(panel_id, true))
+
+
+func set_confirmation_panel_option(panel_id: String, enabled: bool) -> void:
+	_ensure_confirmation_panel_option(panel_id)
+	confirmation_panel_options[panel_id] = enabled
+
+
+func _ensure_confirmation_panel_option(panel_id: String) -> void:
+	if panel_id == "":
+		return
+	if not confirmation_panel_options.has(panel_id):
+		confirmation_panel_options[panel_id] = bool(DEFAULT_CONFIRMATION_PANEL_OPTIONS.get(panel_id, true))
+
+
+func _load_confirmation_panel_options(cfg: ConfigFile) -> void:
+	confirmation_panel_options = DEFAULT_CONFIRMATION_PANEL_OPTIONS.duplicate(true)
+	for definition in get_confirmation_panel_definitions():
+		var panel_id := str(definition.get("id", ""))
+		if panel_id == "":
+			continue
+		var key := "confirmation_panel_%s" % panel_id
+		confirmation_panel_options[panel_id] = bool(cfg.get_value(SECTION, key, DEFAULT_CONFIRMATION_PANEL_OPTIONS.get(panel_id, true)))
+
+
+func _save_confirmation_panel_options(cfg: ConfigFile) -> void:
+	for definition in get_confirmation_panel_definitions():
+		var panel_id := str(definition.get("id", ""))
+		if panel_id == "":
+			continue
+		_ensure_confirmation_panel_option(panel_id)
+		var key := "confirmation_panel_%s" % panel_id
+		cfg.set_value(SECTION, key, bool(confirmation_panel_options.get(panel_id, true)))
+
+
+func toggle_fullscreen(save_after: bool = true) -> bool:
+	fullscreen = not fullscreen
+	apply_settings()
+	if save_after:
+		save_settings()
+	return fullscreen
 
 func reset_to_defaults() -> void:
 	set_defaults()
@@ -64,6 +144,8 @@ func load_settings() -> void:
 		dim_mode_enabled = bool(cfg.get_value(SECTION, "dim_mode_enabled", DEFAULT_DIM_MODE_ENABLED))
 		show_tutorial_on_new_game = bool(cfg.get_value(SECTION, "show_tutorial_on_new_game", DEFAULT_SHOW_TUTORIAL_ON_NEW_GAME))
 		goals_milestones_enabled = bool(cfg.get_value(SECTION, "goals_milestones_enabled", DEFAULT_GOALS_MILESTONES_ENABLED))
+		confirmation_panels_enabled = bool(cfg.get_value(SECTION, "confirmation_panels_enabled", DEFAULT_CONFIRMATION_PANELS_ENABLED))
+		_load_confirmation_panel_options(cfg)
 
 		var w := int(cfg.get_value(SECTION, "res_w", DEFAULT_RESOLUTION.x))
 		var h := int(cfg.get_value(SECTION, "res_h", DEFAULT_RESOLUTION.y))
@@ -81,6 +163,8 @@ func save_settings() -> void:
 	cfg.set_value(SECTION, "dim_mode_enabled", dim_mode_enabled)
 	cfg.set_value(SECTION, "show_tutorial_on_new_game", show_tutorial_on_new_game)
 	cfg.set_value(SECTION, "goals_milestones_enabled", goals_milestones_enabled)
+	cfg.set_value(SECTION, "confirmation_panels_enabled", confirmation_panels_enabled)
+	_save_confirmation_panel_options(cfg)
 	cfg.set_value(SECTION, "res_w", resolution.x)
 	cfg.set_value(SECTION, "res_h", resolution.y)
 	cfg.save(SAVE_PATH)

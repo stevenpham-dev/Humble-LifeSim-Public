@@ -556,6 +556,11 @@ func _on_delete_pressed(slot_id: int) -> void:
 		return
 
 	_pending_delete_slot_id = slot_id
+
+	if not _should_show_delete_confirmation():
+		_delete_slot_now(slot_id)
+		return
+
 	if delete_confirm_label != null:
 		delete_confirm_label.text = "Are you sure you want to delete Slot %d forever?" % slot_id
 	if delete_confirm_overlay != null:
@@ -570,7 +575,11 @@ func _confirm_delete() -> void:
 		_cancel_delete()
 		return
 
-	var deleted_slot := _pending_delete_slot_id
+	_delete_slot_now(_pending_delete_slot_id)
+
+
+func _delete_slot_now(slot_id: int) -> void:
+	var deleted_slot := slot_id
 	_pending_delete_slot_id = -1
 	if delete_confirm_overlay != null:
 		delete_confirm_overlay.visible = false
@@ -585,6 +594,12 @@ func _confirm_delete() -> void:
 		_set_message("That slot was already empty.")
 
 	_rebuild_slots()
+
+
+func _should_show_delete_confirmation() -> bool:
+	if SettingsData != null and SettingsData.has_method("is_confirmation_enabled"):
+		return SettingsData.is_confirmation_enabled("save_delete")
+	return true
 
 
 func _cancel_delete() -> void:

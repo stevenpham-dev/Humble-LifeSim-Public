@@ -228,8 +228,25 @@ func _show_result(success: bool) -> void:
 		result_icon.texture = _load_texture(WRONG_IMAGE)
 		message_label.text = "Wrong order. Try again when ready."
 
-	result_overlay.visible = true
-	emit_signal("burger_minigame_action_completed", result)
+	if _should_show_result_panel():
+		result_overlay.visible = true
+		emit_signal("burger_minigame_action_completed", result)
+	else:
+		result_overlay.visible = false
+		emit_signal("burger_minigame_action_completed", result)
+		call_deferred("_auto_start_next_round")
+
+
+func _should_show_result_panel() -> bool:
+	if SettingsData != null and SettingsData.has_method("is_confirmation_enabled"):
+		return SettingsData.is_confirmation_enabled("burger_minigame_result")
+	return true
+
+
+func _auto_start_next_round() -> void:
+	if not is_inside_tree():
+		return
+	_start_round()
 
 
 func _load_texture(path: String) -> Texture2D:
@@ -268,4 +285,3 @@ func _make_card_pressed_style() -> StyleBoxFlat:
 	style.corner_radius_bottom_left = 16
 	style.corner_radius_bottom_right = 16
 	return style
-

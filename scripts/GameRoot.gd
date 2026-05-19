@@ -69,6 +69,11 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_F11:
+			_toggle_fullscreen_shortcut()
+			get_viewport().set_input_as_handled()
+			return
+
 		if _critical_modal_is_open():
 			_bring_critical_panels_to_front()
 			return
@@ -78,6 +83,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if event.keycode == KEY_I:
 			_toggle_inventory_panel()
+
+func _toggle_fullscreen_shortcut() -> void:
+	if SettingsData == null:
+		return
+	var enabled := SettingsData.toggle_fullscreen(true)
+	var text := "Fullscreen On" if enabled else "Fullscreen Off"
+	_set_message("%s. Press F11 to toggle fullscreen." % text)
+	_show_toast("Display", text, "FS")
+
 
 func _on_inventory_pressed() -> void:
 	_toggle_inventory_panel()
@@ -1420,6 +1434,12 @@ func _show_job_promotion(promotion: Dictionary) -> void:
 
 
 func _show_travel_confirm(destination_title: String, travel_time_text: String, travel_cost_text: String, travel_effect_text: String, callback: Callable) -> void:
+	if SettingsData != null and SettingsData.has_method("is_confirmation_enabled") and not SettingsData.is_confirmation_enabled("travel"):
+		pending_travel_callback = Callable()
+		if callback.is_valid():
+			callback.call()
+		return
+
 	if travel_confirm_panel == null:
 		if callback.is_valid():
 			callback.call()
