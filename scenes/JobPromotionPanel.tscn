@@ -177,7 +177,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.96, 0.96, 0.98, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "Pay Increase: $120 → $145"
+text = "Pay Increase: $120 -> $145"
 
 [node name="RequirementNoteLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/InfoPanel/InfoMargin/InfoColumn"]
 layout_mode = 2
@@ -198,3 +198,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "Continue"
+

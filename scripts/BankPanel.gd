@@ -102,7 +102,7 @@ func _refresh_history() -> void:
 
 	for i in range(transactions.size() - 1, -1, -1):
 		var entry: Dictionary = transactions[i]
-		var line := "Day %d %s — %s | Wallet $%d | Bank $%d" % [
+		var line := "Day %d %s - %s | Wallet $%d | Bank $%d" % [
 			int(entry.get("day", 1)),
 			str(entry.get("time_text", "00:00")),
 			str(entry.get("text", "Transaction")),

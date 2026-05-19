@@ -730,10 +730,10 @@ func get_time_text_12h() -> String:
 
 func get_happiness_icon() -> String:
 	if happiness <= 25:
-		return "☹️"
+		return "Low"
 	elif happiness < 75:
-		return "😐"
-	return "🙂"
+		return "Mid"
+	return "Good"
 
 func _migrate_legacy_job_data() -> void:
 	var migrated_job: String = job_id
@@ -1319,7 +1319,7 @@ func do_work() -> Dictionary:
 	var promotion: Dictionary = {}
 	if bool(exp_result.get("success", false)):
 		var new_job_name: String = get_primary_job_name()
-		add_log_at_time("Promotion: %s → %s." % [old_job_name, new_job_name], "promotion", start_time_text)
+		add_log_at_time("Promotion: %s -> %s." % [old_job_name, new_job_name], "promotion", start_time_text)
 		promotion = {"success": true, "old_rank": old_job_name, "new_rank": new_job_name, "old_pay": get_job_pay(current_job, int(exp_result.get("old_tier", 1))), "new_pay": get_job_pay(current_job, int(exp_result.get("new_tier", 1)))}
 	advance_time(WORK_SHIFT_MINUTES)
 	var current_exp: int = get_job_exp(current_job)
@@ -1531,7 +1531,7 @@ func complete_burger_minigame(success: bool) -> Dictionary:
 	var promotion: Dictionary = {}
 	if bool(exp_result.get("success", false)):
 		var new_job_name: String = get_job_display_name(burger_job)
-		add_log_at_time("Promotion: %s → %s." % [old_job_name, new_job_name], "promotion", start_time_text)
+		add_log_at_time("Promotion: %s -> %s." % [old_job_name, new_job_name], "promotion", start_time_text)
 		promotion = {
 			"success": true,
 			"old_rank": old_job_name,
@@ -1596,14 +1596,13 @@ func _format_meter_value(value: int, max_value: int) -> String:
 func get_top_bar_strings() -> Dictionary:
 	return {
 		"day": "Day: %d" % day,
-		"time": "🕒 %s" % get_time_text_12h(),
-		"money": "💵 $%d" % money,
-		"energy": "⚡ %s" % _format_meter_value(energy, get_max_energy()),
-		"hunger": "🍔 %s" % _format_meter_value(hunger, get_max_fullness()),
-		"happiness": "%s %d:%d" % [get_happiness_icon(), happiness, stress],
-		"health": "❤️ %s" % _format_meter_value(health, get_max_health())
+		"time": get_time_text_12h(),
+		"money": "$%d" % money,
+		"energy": _format_meter_value(energy, get_max_energy()),
+		"hunger": _format_meter_value(hunger, get_max_fullness()),
+		"happiness": "%d:%d" % [happiness, stress],
+		"health": _format_meter_value(health, get_max_health())
 	}
-
 
 func get_current_week() -> int:
 	return floori(float(day - 1) / 7.0) + 1
@@ -2847,7 +2846,7 @@ func get_current_goal_text() -> String:
 func get_current_goal_data() -> Dictionary:
 	var goals := _get_candidate_goals()
 	if goals.is_empty():
-		return {"id": "free_play", "text": "Goal: Free play — build stats, earn money, or explore."}
+		return {"id": "free_play", "text": "Goal: Free play - build stats, earn money, or explore."}
 
 	var skipped: Array = flags.get("skipped_goal_ids", [])
 	for goal in goals:
@@ -2874,15 +2873,15 @@ func skip_current_goal() -> Dictionary:
 func _get_candidate_goals() -> Array[Dictionary]:
 	var goals: Array[Dictionary] = []
 	if health <= LOW_HEALTH_WARNING_THRESHOLD:
-		goals.append({"id": "critical_health", "text": "Goal: Critical Health — visit Clinic or eat healthy food."})
+		goals.append({"id": "critical_health", "text": "Goal: Critical Health - visit Clinic or eat healthy food."})
 	if hunger <= 20:
-		goals.append({"id": "low_food", "text": "Goal: Food is low — eat or buy groceries."})
+		goals.append({"id": "low_food", "text": "Goal: Food is low - eat or buy groceries."})
 	if energy < 20:
-		goals.append({"id": "low_energy", "text": "Goal: Energy is low — sleep or use an Energy Drink."})
+		goals.append({"id": "low_energy", "text": "Goal: Energy is low - sleep or use an Energy Drink."})
 	if happiness <= 10:
-		goals.append({"id": "low_happiness", "text": "Goal: Happiness is low — rest, phone someone, or avoid stressful actions."})
+		goals.append({"id": "low_happiness", "text": "Goal: Happiness is low - rest, phone someone, or avoid stressful actions."})
 	if stress >= 80:
-		goals.append({"id": "high_stress", "text": "Goal: Stress is high — clinic advice, sleep, or gym can help."})
+		goals.append({"id": "high_stress", "text": "Goal: Stress is high - clinic advice, sleep, or gym can help."})
 	if money < 120:
 		goals.append({"id": "earn_cash", "text": "Goal: Work a shift or Burger Town to afford books and food."})
 	if not has_credential("Sales Certificate"):
@@ -2896,7 +2895,7 @@ func _get_candidate_goals() -> Array[Dictionary]:
 	elif not jobs.has("sales"):
 		goals.append({"id": "apply_sales", "text": "Goal: Apply for Sales on the Job Board."})
 	elif get_bank_balance() <= 0 and money >= 100:
-		goals.append({"id": "bank_savings", "text": "Goal: Optional — deposit some money at the Bank for interest."})
+		goals.append({"id": "bank_savings", "text": "Goal: Optional - deposit some money at the Bank for interest."})
 	elif get_owned_vehicle_count() <= 1 and money >= 2000:
 		goals.append({"id": "buy_car", "text": "Goal: Visit Car Shop and buy a faster vehicle."})
 	else:
@@ -3769,7 +3768,7 @@ func play_slots_round(bet: int) -> Dictionary:
 
 
 func _roll_slot_symbols() -> Array[String]:
-	var weighted: Array[String] = ["🍒", "🍒", "🍒", "🍋", "🍋", "🔔", "🔔", "💎", "7"]
+	var weighted: Array[String] = ["CHR", "CHR", "CHR", "LEM", "LEM", "BEL", "BEL", "GEM", "7"]
 	var result: Array[String] = []
 	for i in range(3):
 		result.append(weighted[randi_range(0, weighted.size() - 1)])
@@ -3786,7 +3785,7 @@ func _get_slots_multiplier(symbols: Array[String]) -> float:
 
 	if a == "7" and b == "7" and c == "7":
 		return 8.0
-	if a == "💎" and b == "💎" and c == "💎":
+	if a == "GEM" and b == "GEM" and c == "GEM":
 		return 5.0
 	if a == b and b == c:
 		return 3.0

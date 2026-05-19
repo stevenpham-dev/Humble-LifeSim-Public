@@ -413,7 +413,7 @@ func _refresh_track_buttons() -> void:
 		var selected: bool = track_name == _selected_track
 
 		if owned:
-			button.text = "✓ %s" % str(TRACKS[track_name].get("short_name", track_name))
+			button.text = "OK %s" % str(TRACKS[track_name].get("short_name", track_name))
 		else:
 			button.text = str(TRACKS[track_name].get("short_name", track_name))
 
@@ -496,7 +496,7 @@ func _refresh_notes() -> void:
 	var read_energy := int(book_costs.get("energy", BOOK_ENERGY_COST))
 	study_button.text = "Learn" if GameState.can_perform_action(learn_energy) else "Learn (Need Energy)"
 	read_book_button.text = "Read Book" if GameState.can_perform_action(read_energy) else "Read Book (Need Energy)"
-	description_label.text = "School actions take 3 hours. Tracks follow the career path: Sales → Teaching → Programming → Nursing → Engineering → Advanced → Medical. Learn is free; Read Book uses the matching profession book. Current Learn Cost: Energy -%d | Stress +%d." % [learn_energy, int(costs.get("stress", LEARN_STRESS_GAIN))]
+	description_label.text = "School actions take 3 hours. Tracks follow the career path: Sales -> Teaching -> Programming -> Nursing -> Engineering -> Advanced -> Medical. Learn is free; Read Book uses the matching profession book. Current Learn Cost: Energy -%d | Stress +%d." % [learn_energy, int(costs.get("stress", LEARN_STRESS_GAIN))]
 
 
 func _refresh_exam_controls() -> void:
@@ -1105,3 +1105,4 @@ func _show(text: String) -> void:
 
 func _emit_completed() -> void:
 	emit_signal("school_action_completed")
+

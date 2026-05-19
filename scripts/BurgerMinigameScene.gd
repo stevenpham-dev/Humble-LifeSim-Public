@@ -63,7 +63,7 @@ func _start_round() -> void:
 	result_overlay.visible = false
 	wallet_label.text = "Wallet: $%d" % GameState.money
 	streak_label.text = "Current streak: %d | Best: %d" % [GameState.get_burger_streak(), GameState.get_best_burger_streak()]
-	order_label.text = "Order: " + " → ".join(_get_order_names())
+	order_label.text = "Order: " + " -> ".join(_get_order_names())
 
 	if GameState.has_method("can_play_burger_minigame"):
 		var play_check: Dictionary = GameState.can_play_burger_minigame()
@@ -268,3 +268,4 @@ func _make_card_pressed_style() -> StyleBoxFlat:
 	style.corner_radius_bottom_left = 16
 	style.corner_radius_bottom_right = 16
 	return style
+

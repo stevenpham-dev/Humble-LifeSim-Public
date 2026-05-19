@@ -1,4 +1,3 @@
-
 extends Control
 
 signal phone_action_completed(result: Dictionary)
@@ -73,7 +72,7 @@ func refresh() -> void:
 	var select_index := -1
 	for i in range(_contacts.size()):
 		var contact: Dictionary = _contacts[i]
-		var label := "%s — %s" % [str(contact.get("name", "Contact")), str(contact.get("role", "Role"))]
+		var label := "%s - %s" % [str(contact.get("name", "Contact")), str(contact.get("role", "Role"))]
 		if bool(contact.get("is_current_boss", false)):
 			label += " (Current Boss)"
 		contact_option_button.add_item(label, i)
@@ -156,7 +155,7 @@ func _make_contact_label(contact: Dictionary) -> Label:
 	var job_id := str(contact.get("job_id", ""))
 	var relationship := GameState.get_job_employer_relationship(job_id)
 	var label := Label.new()
-	label.text = "%s — %s | %d/100 | Apply +%d%% | Work EXP +%d%%" % [
+	label.text = "%s - %s | %d/100 | Apply +%d%% | Work EXP +%d%%" % [
 		str(contact.get("name", "Contact")),
 		str(contact.get("role", "Role")),
 		relationship,
@@ -168,3 +167,4 @@ func _make_contact_label(contact: Dictionary) -> Label:
 	label.add_theme_font_size_override("font_size", 16)
 	label.add_theme_color_override("font_color", Color(0.96, 0.98, 1.0, 1))
 	return label
+

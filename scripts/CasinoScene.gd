@@ -380,7 +380,7 @@ func _set_blackjack_buttons(enabled: bool) -> void:
 
 func _build_deck() -> void:
 	_deck.clear()
-	var suits := ["♠", "♥", "♦", "♣"]
+	var suits := ["S", "H", "D", "C"]
 	var ranks := ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 	for suit in suits:
 		for rank in ranks:
@@ -413,7 +413,7 @@ func _make_card_label(card: Dictionary, is_hidden: bool) -> PanelContainer:
 	panel.custom_minimum_size = Vector2(84, 112)
 	panel.add_theme_stylebox_override("panel", _make_card_style(is_hidden))
 	var label := Label.new()
-	label.text = "🂠" if is_hidden else _card_text(card)
+	label.text = "??" if is_hidden else _card_text(card)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_override("font", _font)
@@ -441,7 +441,7 @@ func _card_text(card: Dictionary) -> String:
 
 func _card_color(card: Dictionary) -> Color:
 	var suit := str(card.get("suit", ""))
-	if suit == "♥" or suit == "♦":
+	if suit == "H" or suit == "D":
 		return Color(0.82, 0.06, 0.08, 1)
 	return Color(0.05, 0.07, 0.10, 1)
 
@@ -480,9 +480,9 @@ func _on_spin_pressed() -> void:
 	spin_button.disabled = true
 	slots_result_label.text = "Spinning..."
 	message_label.text = "Slots spinning..."
-	reel1_label.text = "🎰"
-	reel2_label.text = "🎰"
-	reel3_label.text = "🎰"
+	reel1_label.text = "..."
+	reel2_label.text = "..."
+	reel3_label.text = "..."
 	AudioManager.play_slots_spin()
 	await get_tree().create_timer(0.9).timeout
 	if not is_inside_tree():

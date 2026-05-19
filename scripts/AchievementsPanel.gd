@@ -1,4 +1,3 @@
-
 extends Control
 
 signal close_requested
@@ -310,7 +309,7 @@ func _make_achievement_card(achievement: Dictionary) -> PanelContainer:
 	margin.add_child(column)
 
 	var title := Label.new()
-	title.text = "%s %s" % ["✓" if unlocked else "○", str(achievement.get("title", "Achievement"))]
+	title.text = "%s %s" % ["[Unlocked]" if unlocked else "[Locked]", str(achievement.get("title", "Achievement"))]
 	title.add_theme_font_override("font", _font)
 	title.add_theme_font_size_override("font_size", 22)
 	title.add_theme_color_override("font_color", Color(0.74, 1.0, 0.78, 1) if unlocked else Color(1.0, 0.95, 0.78, 1))
@@ -348,3 +347,4 @@ func _make_card_style(unlocked: bool) -> StyleBoxFlat:
 	style.corner_radius_bottom_left = 12
 	style.corner_radius_bottom_right = 12
 	return style
+

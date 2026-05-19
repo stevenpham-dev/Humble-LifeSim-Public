@@ -237,7 +237,7 @@ func _on_reincarnation_completed(result: Dictionary = {}) -> void:
 	if not bool(save_result.get("success", false)):
 		_show_toast("Save Failed", "Reincarnation worked, but autosave failed.", "!")
 	else:
-		_show_toast("Reincarnated", str(result.get("toast_message", "A new life begins.")), "☁")
+		_show_toast("Reincarnated", str(result.get("toast_message", "A new life begins.")), "R")
 
 func _wire_tutorial_panel() -> void:
 	if tutorial_panel == null:
@@ -511,7 +511,7 @@ func _load_starting_state() -> void:
 			return
 
 		_set_message("Loaded %s." % GameState.save_name)
-		_show_toast("Loaded", GameState.save_name, "✓")
+		_show_toast("Loaded", GameState.save_name, "OK")
 		return
 
 	if GameState.slot_id <= 0:
@@ -763,7 +763,7 @@ func _on_clinic_action_completed(result: Dictionary = {}) -> void:
 	if message_text != "":
 		_set_message(message_text)
 
-	_show_toast("Clinic", str(result.get("toast_message", result.get("message", "Clinic action complete."))), "❤️")
+	_show_toast("Clinic", str(result.get("toast_message", result.get("message", "Clinic action complete."))), "H")
 
 
 
@@ -778,7 +778,7 @@ func _on_casino_action_completed(result: Dictionary = {}) -> void:
 	if message_text != "":
 		_set_message(message_text)
 
-	_show_toast("Casino", str(result.get("toast_message", result.get("message", "Casino action complete."))), "♠")
+	_show_toast("Casino", str(result.get("toast_message", result.get("message", "Casino action complete."))), "C")
 
 
 func _on_phone_action_completed(result: Dictionary = {}) -> void:
@@ -792,11 +792,11 @@ func _on_phone_action_completed(result: Dictionary = {}) -> void:
 	if message_text != "":
 		_set_message(message_text)
 
-	_show_toast("Phone", str(result.get("toast_message", result.get("message", "Phone action complete."))), "☎")
+	_show_toast("Phone", str(result.get("toast_message", result.get("message", "Phone action complete."))), "P")
 
 func _on_fast_food_start_burger_shift() -> void:
 	_go_direct_to_location("burger_minigame", "Burger shift started.")
-	_show_toast("Burger Town", "Build the burger in order.", "🍔")
+	_show_toast("Burger Town", "Build the burger in order.", "BT")
 
 
 func _on_burger_minigame_action_completed(result: Dictionary = {}) -> void:
@@ -807,7 +807,7 @@ func _on_burger_minigame_action_completed(result: Dictionary = {}) -> void:
 	if message_text != "":
 		_set_message(message_text)
 
-	_show_toast("Burger Town", str(result.get("toast_message", result.get("message", "Burger shift complete."))), "🍔")
+	_show_toast("Burger Town", str(result.get("toast_message", result.get("message", "Burger shift complete."))), "BT")
 
 	var promotion: Dictionary = result.get("promotion", {})
 	if bool(promotion.get("success", false)):
@@ -843,7 +843,7 @@ func _on_open_phone_requested(job_id: String = "") -> void:
 			GameState.discover_job_employer_contact(job_id, true)
 
 	_go_direct_to_location("phone", "Opened Phone contacts for %s." % contact_name)
-	_show_toast("Phone", "Use Converse, Praise, or Ask Advice to build the relationship.", "☎")
+	_show_toast("Phone", "Use Converse, Praise, or Ask Advice to build the relationship.", "P")
 
 
 func _on_home_phone_selected() -> void:
@@ -852,7 +852,7 @@ func _on_home_phone_selected() -> void:
 
 	location_before_phone = GameState.current_location
 	_go_direct_to_location("phone", "Opened Phone contacts.")
-	_show_toast("Phone", "Build employer relationships and networking bonuses.", "☎")
+	_show_toast("Phone", "Build employer relationships and networking bonuses.", "P")
 
 
 func _on_home_car_selected() -> void:
@@ -861,7 +861,7 @@ func _on_home_car_selected() -> void:
 
 	# Opening the map is navigation, not travel. Destination buttons on the map still use car time/cost.
 	_go_direct_to_location("map", "Opened the map. Choose a destination to travel.")
-	_show_toast("Map", "Map opened. Travel only happens after choosing a destination.", "🗺")
+	_show_toast("Map", "Map opened. Travel only happens after choosing a destination.", "Map")
 
 
 func _request_travel_to(destination_id: String, destination_name: String, travel_effect_text: String = "") -> void:
@@ -912,7 +912,7 @@ func _request_travel_to(destination_id: String, destination_name: String, travel
 			_refresh_ui()
 			_refresh_logs_panel()
 			_set_message(str(result.get("hud_message", "Traveled.")))
-			_show_toast("Travel", str(result.get("toast_message", destination_name)), "→")
+			_show_toast("Travel", str(result.get("toast_message", destination_name)), "->")
 	)
 
 
@@ -1007,7 +1007,7 @@ func _evaluate_health_state() -> void:
 
 	if bool(alert.get("death", false)):
 		_set_message(str(alert.get("hud_message", "Health 0: Reincarnation required.")))
-		_show_toast("Life Ended", str(alert.get("toast_message", "Reincarnate to begin again.")), "☁")
+		_show_toast("Life Ended", str(alert.get("toast_message", "Reincarnate to begin again.")), "R")
 		_open_death_reincarnation_panel()
 		return
 
@@ -1090,7 +1090,7 @@ func _on_map_pressed() -> void:
 		return
 
 	_go_direct_to_location("map", "Opened the map. Choose a destination to travel.")
-	_show_toast("Map", "Map opened. Travel only happens after choosing a destination.", "🗺")
+	_show_toast("Map", "Map opened. Travel only happens after choosing a destination.", "Map")
 
 
 func _on_hints_pressed() -> void:
@@ -1251,7 +1251,7 @@ func _on_sleep_pressed() -> void:
 	_go_direct_to_location("home")
 
 	_set_message(str(result.get("hud_message", "Sleep: Energy 100")))
-	_show_toast("New Day", str(result.get("toast_message", "Recovered.")), "☾")
+	_show_toast("New Day", str(result.get("toast_message", "Recovered.")), "Zz")
 	_show_simple_result_toast(str(result.get("stat_effects", result.get("headline", "You slept."))))
 
 
@@ -1275,7 +1275,7 @@ func _on_save_pressed() -> void:
 	if result.success:
 		_refresh_ui()
 		_set_message("Game saved.")
-		_show_toast("Saved", "Game saved successfully.", "✓")
+		_show_toast("Saved", "Game saved successfully.", "OK")
 	else:
 		_set_message("Save failed: %s" % result.error)
 		_show_toast("Save Failed", str(result.error), "!")
@@ -1299,7 +1299,7 @@ func _on_autosave_timer_timeout() -> void:
 
 	var result := SaveManager.save_current_game()
 	if result.success:
-		_show_toast("Autosave", "Progress saved.", "✓")
+		_show_toast("Autosave", "Progress saved.", "OK")
 
 
 func _show_toast(title: String, message: String, icon_text: String = "") -> void:
@@ -1410,7 +1410,7 @@ func _show_job_promotion(promotion: Dictionary) -> void:
 	if new_rank_label is Label:
 		new_rank_label.text = "New Rank: %s" % new_rank
 	if pay_increase_label is Label:
-		pay_increase_label.text = "Pay Increase: $%d → $%d" % [old_pay, new_pay]
+		pay_increase_label.text = "Pay Increase: $%d -> $%d" % [old_pay, new_pay]
 	if requirement_note_label is Label:
 		requirement_note_label.text = "You met the needed performance and stat requirements."
 
@@ -1539,7 +1539,7 @@ func _refresh_logs_panel() -> void:
 			log_content.add_child(day_header)
 
 		var entry_label := Label.new()
-		entry_label.text = "• [%s] %s" % [time_label, message]
+		entry_label.text = "- [%s] %s" % [time_label, message]
 		entry_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		log_content.add_child(entry_label)
 
@@ -1548,4 +1548,4 @@ func _refresh_logs_panel() -> void:
 
 
 func _show_simple_result_toast(headline: String) -> void:
-	_show_toast("Update", headline, "•")
+	_show_toast("Update", headline, "*")

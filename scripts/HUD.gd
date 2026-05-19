@@ -1,4 +1,3 @@
-
 extends Control
 
 signal home_pressed
@@ -36,6 +35,24 @@ signal goal_skip_pressed
 var goal_panel: PanelContainer = null
 var goal_label: Label = null
 var goal_skip_button: Button = null
+var _hud_icon_nodes: Dictionary = {}
+
+const HUD_ICON_SIZE := Vector2(20, 20)
+const HUD_ICON_PATHS := {
+	"day": "res://assets/images/icons/hud_day.png",
+	"time": "res://assets/images/icons/hud_time.png",
+	"money": "res://assets/images/icons/hud_money.png",
+	"energy": "res://assets/images/icons/hud_energy.png",
+	"food": "res://assets/images/icons/hud_food.png",
+	"mood": "res://assets/images/icons/hud_mood.png",
+	"health": "res://assets/images/icons/hud_health.png"
+}
+
+const HUD_MOOD_ICON_PATHS := {
+	"happy": "res://assets/images/icons/hud_moodHappy.png",
+	"normal": "res://assets/images/icons/hud_moodNormal.png",
+	"sad": "res://assets/images/icons/hud_moodSad.png"
+}
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -45,6 +62,7 @@ func _ready() -> void:
 	$TopBar/TopBarMargin/TopBarRow/MessagePanel/MessageMargin.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	message_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_setup_goal_panel()
+	_setup_hud_stat_icons()
 
 	_make_non_button_children_ignore_mouse(self)
 	for button in [
@@ -179,6 +197,97 @@ func _setup_goal_panel() -> void:
 
 	top_row.add_child(goal_panel)
 
+
+func _setup_hud_stat_icons() -> void:
+	_add_icon_before_label(day_label, "day", "DayIcon")
+	_add_icon_before_label(time_label, "time", "TimeIcon")
+	_add_icon_before_label(money_label, "money", "MoneyIcon")
+	_add_icon_before_label(energy_label, "energy", "EnergyIcon")
+	_add_icon_before_label(hunger_label, "food", "FoodIcon")
+	_add_icon_before_label(happiness_label, "mood", "MoodIcon")
+	_add_icon_before_label(health_label, "health", "HealthIcon")
+
+
+func _add_icon_before_label(target_label: Label, icon_key: String, icon_name: String) -> void:
+	if target_label == null:
+		return
+
+	var parent := target_label.get_parent()
+	if parent == null:
+		return
+
+	if parent.has_node(icon_name):
+		var existing_icon := parent.get_node(icon_name)
+		if existing_icon is TextureRect:
+			_hud_icon_nodes[icon_key] = existing_icon
+		return
+
+	var path := _get_icon_path(icon_key)
+	var loaded := _load_icon_texture(path)
+	if loaded == null:
+		return
+
+	var icon := TextureRect.new()
+	icon.name = icon_name
+	icon.custom_minimum_size = HUD_ICON_SIZE
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.texture = loaded
+	parent.add_child(icon)
+	parent.move_child(icon, target_label.get_index())
+	_hud_icon_nodes[icon_key] = icon
+
+
+func _get_icon_path(icon_key: String) -> String:
+	if icon_key == "mood":
+		return _get_mood_icon_path()
+	return str(HUD_ICON_PATHS.get(icon_key, ""))
+
+
+func _get_mood_icon_path() -> String:
+	var mood_key := _get_mood_icon_key()
+	var mood_path := str(HUD_MOOD_ICON_PATHS.get(mood_key, ""))
+	if mood_path != "" and ResourceLoader.exists(mood_path):
+		return mood_path
+
+	var fallback_path := str(HUD_ICON_PATHS.get("mood", ""))
+	if fallback_path != "" and ResourceLoader.exists(fallback_path):
+		return fallback_path
+
+	return mood_path
+
+
+func _get_mood_icon_key() -> String:
+	var happiness_value := int(GameState.happiness)
+	var stress_value := int(GameState.stress)
+
+	if happiness_value <= 30 or stress_value >= 70:
+		return "sad"
+	if happiness_value >= 75 and stress_value <= 25:
+		return "happy"
+	return "normal"
+
+
+func _load_icon_texture(path: String) -> Texture2D:
+	if path == "" or not ResourceLoader.exists(path):
+		return null
+
+	var loaded := load(path)
+	if loaded is Texture2D:
+		return loaded as Texture2D
+	return null
+
+
+func _refresh_dynamic_hud_icons() -> void:
+	var mood_icon = _hud_icon_nodes.get("mood", null)
+	if not (mood_icon is TextureRect):
+		return
+
+	var mood_texture := _load_icon_texture(_get_mood_icon_path())
+	if mood_texture != null:
+		(mood_icon as TextureRect).texture = mood_texture
+
 func set_goal_text(text: String, enabled: bool) -> void:
 	if goal_panel == null or goal_label == null:
 		return
@@ -210,6 +319,7 @@ func refresh() -> void:
 	hunger_label.text = data.hunger
 	happiness_label.text = data.happiness
 	health_label.text = data.health
+	_refresh_dynamic_hud_icons()
 
 
 func set_message(text: String) -> void:

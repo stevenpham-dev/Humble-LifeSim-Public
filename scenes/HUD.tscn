@@ -92,42 +92,42 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "🕒 08:00 AM"
+text = "08:00 AM"
 
 [node name="MoneyLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1843900837]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "💵 $0"
+text = "$0"
 
 [node name="EnergyLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1324527443]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "⚡ 100"
+text = "100"
 
 [node name="HungerLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=1536646293]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "🍔 100"
+text = "100"
 
 [node name="HappinessLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow" unique_id=216219802]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "🙂 50"
+text = "50:0"
 
 [node name="HealthLabel" type="Label" parent="TopBar/TopBarMargin/TopBarRow"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "❤️ 100"
+text = "100"
 
 [node name="MessagePanel" type="PanelContainer" parent="TopBar/TopBarMargin/TopBarRow"]
 custom_minimum_size = Vector2(280, 46)
@@ -277,3 +277,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Menu"
+

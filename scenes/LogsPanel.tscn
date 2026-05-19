@@ -263,7 +263,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "• You worked and earned $120."
+text = "- You worked and earned $120."
 autowrap_mode = 3
 
 [node name="Day1Entry2" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
@@ -271,7 +271,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "• You studied and gained +1 Intelligence."
+text = "- You studied and gained +1 Intelligence."
 autowrap_mode = 3
 
 [node name="Day2HeaderPanel" type="PanelContainer" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
@@ -290,7 +290,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "• You slept and recovered your energy."
+text = "- You slept and recovered your energy."
 autowrap_mode = 3
 
 [node name="Day2Entry2" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn/LogPanel/LogMargin/LogScroll/LogContent"]
@@ -298,7 +298,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
-text = "• You went to work and completed your shift."
+text = "- You went to work and completed your shift."
 autowrap_mode = 3
 
 [node name="FooterHintLabel" type="Label" parent="CenterContainer/WindowPanel/WindowMargin/MainColumn"]
@@ -308,3 +308,4 @@ theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 15
 horizontal_alignment = 1
 text = "Choose a week to review your activity history."
+
