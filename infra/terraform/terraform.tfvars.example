@@ -1,0 +1,12 @@
+﻿# Copy this file to terraform.tfvars only if you want to override defaults.
+# The default config already works for Steven's first Humble LifeSim AWS deployment.
+
+aws_region   = "us-west-2"
+project_name = "humble-lifesim"
+environment  = "prod"
+
+# Optional. Leave commented unless the auto-generated bucket name is somehow taken.
+# bucket_name_override = "humble-lifesim-prod-web-stevenpham-dev-2026"
+
+force_destroy_bucket = true
+cloudfront_price_class = "PriceClass_100"

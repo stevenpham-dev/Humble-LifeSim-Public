@@ -38,3 +38,12 @@ Thumbs.db
 
 # Important: keep Godot .import files tracked if your project has them.
 # Do not add *.import here unless you intentionally rebuild imports differently.
+
+# Terraform local state/cache
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+!terraform.tfvars.example

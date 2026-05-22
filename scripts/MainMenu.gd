@@ -17,6 +17,7 @@ const ACHIEVEMENTS_PANEL_PATH := "res://scenes/AchievementsPanel.tscn"
 var project_info_button: Button = null
 var quit_game_button: Button = null
 var project_info_overlay: Control = null
+var web_quit_overlay: Control = null
 
 @onready var buttons := [
 	$Center/Layout/NewGameButton,
@@ -174,7 +175,104 @@ func _ensure_quit_game_button() -> void:
 
 func _on_quit_game_pressed() -> void:
 	_play_ui_click()
+	if OS.has_feature("web"):
+		_open_web_quit_overlay()
+		return
+
 	get_tree().quit()
+
+
+func _open_web_quit_overlay() -> void:
+	if web_quit_overlay == null:
+		_build_web_quit_overlay()
+
+	web_quit_overlay.visible = true
+	web_quit_overlay.move_to_front()
+
+
+func _build_web_quit_overlay() -> void:
+	web_quit_overlay = Control.new()
+	web_quit_overlay.name = "WebQuitOverlay"
+	web_quit_overlay.visible = false
+	web_quit_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	web_quit_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(web_quit_overlay)
+
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.66)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	web_quit_overlay.add_child(dim)
+
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	web_quit_overlay.add_child(center)
+
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(720, 340)
+	panel.add_theme_stylebox_override("panel", _make_project_info_panel_style())
+	center.add_child(panel)
+
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 28)
+	margin.add_theme_constant_override("margin_top", 24)
+	margin.add_theme_constant_override("margin_right", 28)
+	margin.add_theme_constant_override("margin_bottom", 24)
+	panel.add_child(margin)
+
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 18)
+	margin.add_child(column)
+
+	var title := Label.new()
+	title.text = "Thanks for Playing!"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 32)
+	title.add_theme_color_override("font_color", Color(1.0, 0.95, 0.78, 1.0))
+	column.add_child(title)
+
+	var body := Label.new()
+	body.text = "The browser version of Humble LifeSim cannot close this tab automatically. Your game has not crashed or frozen. You can close this browser tab/window when you are finished playing."
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	body.add_theme_font_size_override("font_size", 21)
+	body.add_theme_color_override("font_color", Color(0.94, 0.96, 1.0, 1.0))
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	column.add_child(body)
+
+	var hint := Label.new()
+	hint.text = "On desktop builds, Quit Game still closes the game window normally."
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 16)
+	hint.add_theme_color_override("font_color", Color(0.72, 1.0, 0.78, 1.0))
+	column.add_child(hint)
+
+	var button_row := HBoxContainer.new()
+	button_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	button_row.add_theme_constant_override("separation", 14)
+	column.add_child(button_row)
+
+	var close_button := Button.new()
+	close_button.text = "Close Message"
+	close_button.custom_minimum_size = Vector2(190, 46)
+	close_button.add_theme_font_size_override("font_size", 20)
+	close_button.pressed.connect(_close_web_quit_overlay)
+	button_row.add_child(close_button)
+
+	var return_button := Button.new()
+	return_button.text = "Stay on Main Menu"
+	return_button.custom_minimum_size = Vector2(220, 46)
+	return_button.add_theme_font_size_override("font_size", 20)
+	return_button.pressed.connect(_close_web_quit_overlay)
+	button_row.add_child(return_button)
+
+
+func _close_web_quit_overlay() -> void:
+	_play_ui_click()
+	if web_quit_overlay != null:
+		web_quit_overlay.visible = false
+
 
 func _on_project_info_pressed() -> void:
 	_play_ui_click()
